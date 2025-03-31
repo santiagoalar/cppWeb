@@ -1,32 +1,32 @@
-<div class="auth-container" [@fadeIn] style="display: flex; flex-direction: column; align-items: center;">
-  <div class="logo-row" style="width: 100%; text-align: center;">
-    <img src="assets/logo.png" alt="App Logo" style="width: 300px; display: block; margin: 0 auto;" />
+<div class="auth-container" [@fadeIn] style="display: flex; flex-direction: row; align-items: center; justify-content: center; padding: 20px;">
+  <div class="logo-row" style="flex: 0 0 auto; margin-right: 40px;">
+    <img src="assets/logo.png" alt="App Logo" style="width: 300px;" />
   </div>
-  <div class="card-row" style="width: 100%; max-width: 500px;">
+  <div class="card-row" style="flex: 0 0 auto; width: 100%; max-width: 500px;">
     <mat-card class="auth-card">
       <mat-card-header>
-        <mat-card-title class="auth-title" style="margin-bottom: 20px;">Sign In</mat-card-title>
+        <mat-card-title class="auth-title" style="margin-bottom: 20px;">{{ 'auth.signIn.title' | translate }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
           <mat-form-field appearance="fill" color="accent" class="full-width">
-            <mat-label>Email</mat-label>
+            <mat-label>{{ 'auth.signIn.email' | translate }}</mat-label>
             <input matInput formControlName="email" type="email" required>
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent" class="full-width">
-            <mat-label>Password</mat-label>
+            <mat-label>{{ 'auth.signIn.password' | translate }}</mat-label>
             <input matInput formControlName="password" type="password" required>
           </mat-form-field>
           <div style="text-align: right;">
             <button mat-raised-button color="primary" type="submit" [disabled]="!signInForm.valid" style="font-size: 18px; padding: 12px 24px;">
-              Sign In
+              {{ 'auth.signIn.submitButton' | translate }}
             </button>
           </div>
         </form>
       </mat-card-content>
       <mat-card-actions style="display: flex; justify-content: center;">
-        <button mat-button color="accent" routerLink="/sign-up">
-          Don't have an account? Sign Up
+        <button mat-button color="primary" routerLink="/sign-up">
+          {{ 'auth.signIn.noAccount' | translate }}
         </button>
       </mat-card-actions>
     </mat-card>

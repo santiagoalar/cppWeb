@@ -1,0 +1,27 @@
+{
+    "auth": {
+      "signIn": {
+        "title": "Iniciar Sesión",
+        "email": "Correo Electrónico",
+        "password": "Contraseña",
+        "submitButton": "Iniciar Sesión",
+        "noAccount": "¿No tienes cuenta? Regístrate"
+      },
+      "signUp": {
+        "title": "Registro",
+        "username": "Nombre de Usuario",
+        "phone": "Teléfono",
+        "role": "Rol",
+        "email": "Correo Electrónico",
+        "password": "Contraseña",
+        "submitButton": "Registrarse",
+        "haveAccount": "¿Ya tienes cuenta? Inicia Sesión"
+      },
+      "roles": {
+        "customer": "Cliente",
+        "salesman": "Vendedor",
+        "director": "Directivo",
+        "transport": "Transportista"
+      }
+    }
+  }

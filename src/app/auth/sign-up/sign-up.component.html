@@ -5,45 +5,45 @@
   <div class="card-row" style="flex: 0 0 auto; width: 100%; max-width: 500px;">
     <mat-card class="auth-card">
       <mat-card-header>
-        <mat-card-title class="auth-title" style="margin-bottom: 20px;">Sign Up</mat-card-title>
+        <mat-card-title class="auth-title" style="margin-bottom: 20px;">{{ 'auth.signUp.title' | translate }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
           <mat-form-field appearance="fill" color="accent" class="full-width">
-            <mat-label>Username</mat-label>
+            <mat-label>{{ 'auth.signUp.username' | translate }}</mat-label>
             <input matInput formControlName="username" required>
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent" class="full-width">
-            <mat-label>Phone</mat-label>
+            <mat-label>{{ 'auth.signUp.phone' | translate }}</mat-label>
             <input matInput formControlName="phone" type="tel" required>
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent" class="full-width">
-            <mat-label>Role</mat-label>
+            <mat-label>{{ 'auth.signUp.role' | translate }}</mat-label>
             <mat-select formControlName="role" required>
-              <mat-option value="CLIENTE">Customer</mat-option>
-              <mat-option value="VENDEDOR">Salesman</mat-option>
-              <mat-option value="DIRECTIVO">Director</mat-option>
-              <mat-option value="TRANSPORTISTA">Transport</mat-option>
+              <mat-option value="CLIENTE">{{ 'auth.roles.customer' | translate }}</mat-option>
+              <mat-option value="VENDEDOR">{{ 'auth.roles.salesman' | translate }}</mat-option>
+              <mat-option value="DIRECTIVO">{{ 'auth.roles.director' | translate }}</mat-option>
+              <mat-option value="TRANSPORTISTA">{{ 'auth.roles.transport' | translate }}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent" class="full-width">
-            <mat-label>Email</mat-label>
+            <mat-label>{{ 'auth.signUp.email' | translate }}</mat-label>
             <input matInput formControlName="email" type="email" required>
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent" class="full-width">
-            <mat-label>Password</mat-label>
+            <mat-label>{{ 'auth.signUp.password' | translate }}</mat-label>
             <input matInput formControlName="password" type="password" required>
           </mat-form-field>
           <div style="text-align: right;">
             <button mat-raised-button color="accent" type="submit" [disabled]="!signUpForm.valid" style="font-size: 18px; padding: 12px 24px;">
-              Sign Up
+              {{ 'auth.signUp.submitButton' | translate }}
             </button>
           </div>
         </form>
       </mat-card-content>
       <mat-card-actions style="display: flex; justify-content: center;">
         <button mat-button color="accent" routerLink="/sign-in">
-          Already have an account? Sign In
+          {{ 'auth.signUp.haveAccount' | translate }}
         </button>
       </mat-card-actions>
     </mat-card>
