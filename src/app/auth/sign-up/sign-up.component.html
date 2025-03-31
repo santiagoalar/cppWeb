@@ -1,8 +1,8 @@
-<div class="auth-container" [@fadeIn] style="display: flex; flex-direction: column; align-items: center;">
-  <div class="logo-row" style="width: 100%; text-align: center;">
-    <img src="assets/logo.png" alt="App Logo" style="width: 300px; display: block; margin: 0 auto;" />
+<div class="auth-container" [@fadeIn] style="display: flex; flex-direction: row; align-items: center; justify-content: center; padding: 20px;">
+  <div class="logo-row" style="flex: 0 0 auto; margin-right: 40px;">
+    <img src="assets/logo.png" alt="App Logo" style="width: 300px;" />
   </div>
-  <div class="card-row" style="width: 100%; max-width: 500px;">
+  <div class="card-row" style="flex: 0 0 auto; width: 100%; max-width: 500px;">
     <mat-card class="auth-card">
       <mat-card-header>
         <mat-card-title class="auth-title" style="margin-bottom: 20px;">Sign Up</mat-card-title>
@@ -12,6 +12,19 @@
           <mat-form-field appearance="fill" color="accent" class="full-width">
             <mat-label>Username</mat-label>
             <input matInput formControlName="username" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill" color="accent" class="full-width">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone" type="tel" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill" color="accent" class="full-width">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role" required>
+              <mat-option value="CLIENTE">Customer</mat-option>
+              <mat-option value="VENDEDOR">Salesman</mat-option>
+              <mat-option value="DIRECTIVO">Director</mat-option>
+              <mat-option value="TRANSPORTISTA">Transport</mat-option>
+            </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent" class="full-width">
             <mat-label>Email</mat-label>
