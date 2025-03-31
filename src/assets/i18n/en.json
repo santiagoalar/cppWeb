@@ -1,0 +1,30 @@
+{
+    "auth": {
+      "signIn": {
+        "title": "Sign In",
+        "email": "Email",
+        "password": "Password",
+        "submitButton": "Sign In",
+        "noAccount": "Don't have an account? Sign Up"
+      },
+      "signUp": {
+        "title": "Sign Up",
+        "username": "Username",
+        "phone": "Phone",
+        "role": "Role",
+        "email": "Email",
+        "password": "Password",
+        "submitButton": "Sign Up",
+        "haveAccount": "Already have an account? Sign In"
+      },
+      "roles": {
+        "customer": "Customer",
+        "salesman": "Salesman",
+        "director": "Director",
+        "transport": "Transport"
+      }
+    },
+    "common": {
+      "language": "Language"
+    }
+  }
