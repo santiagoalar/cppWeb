@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = `${environment.apiBaseUrl}/bff/v1/web/users/`;
+    private apiUrl = `/bff/v1/web/users/`;
 
   constructor(private http: HttpClient) {}
 

@@ -1,0 +1,8 @@
+{
+    "/bff": {
+      "target": "http://34.110.164.125",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
