@@ -22,9 +22,21 @@
         "salesman": "Salesman",
         "director": "Director",
         "transport": "Transport"
-      }
+      },
+      "failed": "Authentication failed. Please check your credentials."
     },
     "common": {
       "language": "Language"
+    },
+    "mainPage": {
+      "title": "Welcome to the Main Page",
+      "description": "This is the landing page after signing in successfully.",
+      "signOutButton": "Sign Out"
+    },
+    "user": {
+      "info": {
+        "title": "User Information",
+        "signOut": "Sign Out"
+      }
     }
-  }
+}
