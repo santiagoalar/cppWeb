@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,8 +20,9 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class SignInComponent implements OnInit {
   signInForm!: FormGroup;
+  signInErrorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
@@ -29,8 +33,18 @@ export class SignInComponent implements OnInit {
 
   onSubmit(): void {
     if (this.signInForm.valid) {
-      // Handle sign-in logic here
-      console.log('Sign In Form Value:', this.signInForm.value);
+      const body = this.signInForm.value;
+      this.authService.authenticateUser(body).subscribe({
+        next: (response) => {
+          this.signInErrorMessage = null;
+          console.log('Authentication success:', response);
+          this.router.navigate(['/main-page']);
+        },
+        error: (error) => {
+          this.signInErrorMessage = 'Invalid email or password';
+          console.error('Authentication failed:', error);
+        }
+      });
     }
   }
 }
