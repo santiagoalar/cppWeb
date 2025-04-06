@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sign-in',
@@ -21,7 +22,7 @@ export class SignInComponent implements OnInit {
   signInForm!: FormGroup;
   signInErrorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
@@ -33,9 +34,7 @@ export class SignInComponent implements OnInit {
   onSubmit(): void {
     if (this.signInForm.valid) {
       const body = this.signInForm.value;
-      this.http.post('http://localhost:5001/bff/v1/web/users/auth', body, {
-        headers: { 'Content-Type': 'application/json' }
-      }).subscribe({
+      this.authService.authenticateUser(body).subscribe({
         next: (response) => {
           this.signInErrorMessage = null;
           console.log('Authentication success:', response);
