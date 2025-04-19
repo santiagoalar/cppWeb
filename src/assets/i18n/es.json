@@ -35,5 +35,15 @@
         "title": "Información del Usuario",
         "signOut": "Cerrar Sesión"
       }
+    },
+    "ALERTS": {
+    "SIGN_IN_FIRST": "Por favor, inicia sesión primero.",
+    "SESSION_EXPIRED": "La sesión ha expirado. Por favor, inicia sesión de nuevo."
+    },
+    "Close": "Cerrar",
+    "SIGN_IN_ERROR": {
+      "TOKEN_VALIDATION_FAILED": "La validación del token falló. Por favor, inténtalo de nuevo.",
+      "NO_TOKEN": "No se recibió token de la autenticación.",
+      "INVALID": "Correo o contraseña inválidos"
     }
 }

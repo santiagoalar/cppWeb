@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { environment } from 'src/environments/environment';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,7 +22,12 @@ export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup;
   errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder, 
+    private authService: AuthService, 
+    private router: Router,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
@@ -53,7 +58,7 @@ export class SignUpComponent implements OnInit {
         },
         error: (err) => {
           console.error('Error al registrar usuario', err);
-          this.errorMessage = 'Hubo un error al registrar el usuario. Intenta nuevamente.';
+          this.errorMessage = this.translate.instant('SIGN_UP_ERROR.REGISTRATION_FAILED');
         }
       });
     }

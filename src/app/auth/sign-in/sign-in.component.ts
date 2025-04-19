@@ -4,6 +4,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { environment } from 'src/environments/environment';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sign-in',
@@ -22,7 +23,7 @@ export class SignInComponent implements OnInit {
   signInForm!: FormGroup;
   signInErrorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private translate: TranslateService) {}
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
@@ -35,13 +36,31 @@ export class SignInComponent implements OnInit {
     if (this.signInForm.valid) {
       const body = this.signInForm.value;
       this.authService.authenticateUser(body).subscribe({
-        next: (response) => {
+        next: (response: any) => {
           this.signInErrorMessage = null;
-          console.log('Authentication success:', response);
-          this.router.navigate(['/main-page']);
+          if (response && response.token) {
+            localStorage.setItem('token', response.token);
+            this.authService.validateToken(response.token).subscribe({
+              next: (validationResponse) => {
+                if (validationResponse) {
+                  localStorage.setItem('userRole', validationResponse.role);
+                  localStorage.setItem('userName', validationResponse.name);
+                }
+                console.log('Token validation successful:', validationResponse);
+                this.router.navigate(['/main-page']);
+              },
+              error: (validationError) => {
+                console.error('Token validation failed:', validationError);
+                localStorage.clear();
+                this.signInErrorMessage = this.translate.instant('SIGN_IN_ERROR.TOKEN_VALIDATION_FAILED');
+              }
+            });
+          } else {
+            this.signInErrorMessage = this.translate.instant('SIGN_IN_ERROR.NO_TOKEN');
+          }
         },
         error: (error) => {
-          this.signInErrorMessage = 'Invalid email or password';
+          this.signInErrorMessage = this.translate.instant('SIGN_IN_ERROR.INVALID');
           console.error('Authentication failed:', error);
         }
       });

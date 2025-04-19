@@ -38,5 +38,15 @@
         "title": "User Information",
         "signOut": "Sign Out"
       }
+    },
+    "ALERTS": {
+      "SIGN_IN_FIRST": "Please sign in first.",
+      "SESSION_EXPIRED": "Session expired. Please sign in again."
+    },
+    "Close": "Close",
+    "SIGN_IN_ERROR": {
+      "TOKEN_VALIDATION_FAILED": "Token validation failed. Please try again.",
+      "NO_TOKEN": "No token received from authentication.",
+      "INVALID": "Invalid email or password"
     }
 }
