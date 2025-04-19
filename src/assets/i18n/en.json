@@ -1,0 +1,42 @@
+{
+    "auth": {
+      "signIn": {
+        "title": "Sign In",
+        "email": "Email",
+        "password": "Password",
+        "submitButton": "Sign In",
+        "noAccount": "Don't have an account? Sign Up"
+      },
+      "signUp": {
+        "title": "Sign Up",
+        "username": "Username",
+        "phone": "Phone",
+        "role": "Role",
+        "email": "Email",
+        "password": "Password",
+        "submitButton": "Sign Up",
+        "haveAccount": "Already have an account? Sign In"
+      },
+      "roles": {
+        "customer": "Customer",
+        "salesman": "Salesman",
+        "director": "Director",
+        "transport": "Transport"
+      },
+      "failed": "Authentication failed. Please check your credentials."
+    },
+    "common": {
+      "language": "Language"
+    },
+    "mainPage": {
+      "title": "Welcome to the Main Page",
+      "description": "This is the landing page after signing in successfully.",
+      "signOutButton": "Sign Out"
+    },
+    "user": {
+      "info": {
+        "title": "User Information",
+        "signOut": "Sign Out"
+      }
+    }
+}
