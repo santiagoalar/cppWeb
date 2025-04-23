@@ -57,3 +57,11 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1200px;  /* Same as your .navbar-inner max-width */
+  margin: 0 auto;     /* Centers the content */
+  padding: 0 16px;
+  box-sizing: border-box;
+}

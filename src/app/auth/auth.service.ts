@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = `${environment.apiBaseUrl}/bff/v1/web/users/`;
+  private apiUrl = `${environment.apiBaseUrl}/bff/v1/web/users/`;
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +24,7 @@ export class AuthService {
 
   validateToken(token: string): Observable<any> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      Authorization: `Bearer ${token}`
     });
     return this.http.get(`${this.apiUrl}me`, { headers });
   }

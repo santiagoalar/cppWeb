@@ -1,0 +1,37 @@
+<mat-toolbar class="navbar" [@fadeIn]>
+  <div class="navbar-inner">
+    <div class="app-title">
+      <img src="assets/minilogo.png" alt="Logo" class="logo" />
+      CCP
+    </div>
+    <div class="nav-links">
+      <a mat-button routerLink="/manufacturers">{{ 'navbar.manufacturers' | translate }}</a>
+      <a mat-button routerLink="/orders">{{ 'navbar.orders' | translate }}</a>
+      <a mat-button routerLink="/products">{{ 'navbar.products' | translate }}</a>
+    </div>
+    <span class="spacer"></span>
+    <div class="actions">
+      <button mat-button [matMenuTriggerFor]="languageMenu">
+        <mat-icon>language</mat-icon> {{ currentLang | uppercase }}
+      </button>
+      <mat-menu #languageMenu="matMenu" class="accent-menu">
+        <button mat-menu-item (click)="changeLanguage('en')">English</button>
+        <button mat-menu-item (click)="changeLanguage('es')">Español</button>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu" class="user-info-menu accent-menu">
+        <div class="user-header">
+          <div class="user-name">{{ userData?.name }}</div>
+          <div class="user-role">{{ userData?.role | titlecase }}</div>
+        </div>
+        <div class="user-contact" style="padding: 10px 10px 10px; font-size: 0.85em; margin-top: 10px;">
+          <div class="user-email">{{ userData?.email }}</div>
+          <div class="user-phone">{{ userData?.phone }}</div>
+        </div>
+        <button mat-menu-item (click)="signOut()">{{ 'navbar.signOut' | translate }}</button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
