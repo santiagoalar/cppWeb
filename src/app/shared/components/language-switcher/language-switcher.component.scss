@@ -1,3 +1,9 @@
 .language-switcher {
-    display: inline-block;
-  }
+  display: inline-block !important;
+}
+
+.language-switcher em,
+.language-switcher strong {
+  font-weight: normal;
+  font-style: normal;
+}

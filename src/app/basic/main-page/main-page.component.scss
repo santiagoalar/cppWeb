@@ -1,22 +1,8 @@
-.dark-navbar {
-    background-color: #424242 !important; /* Dark gray background */
-    color: #FFFFFF !important;
-  }
-  
-  .dark-navbar a, .dark-navbar button {
-    color: #FFFFFF !important;
-  }
-  
-  .spacer {
-    flex: 1 1 auto;
-  }
-  
-  .navbar-left, .navbar-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-left .brand {
-    font-weight: bold;
-    margin-right: 16px;
-  }
+.welcome-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

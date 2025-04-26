@@ -26,8 +26,9 @@
       }
     },
     "mainPage": {
-      "title": "Bienvenido a la Página Principal",
-      "description": "Esta es la página de inicio después de iniciar sesión exitosamente.",
+      "title": "¡Bienvenido a nuestro sitio web!",
+      "description": "Nos alegra tenerte aquí.",
+      "additionalMessage": "Estamos trabajando en esta página, siéntete libre de continuar navegando.",
       "signOutButton": "Cerrar Sesión"
     },
     "user": {
@@ -45,5 +46,51 @@
       "TOKEN_VALIDATION_FAILED": "La validación del token falló. Por favor, inténtalo de nuevo.",
       "NO_TOKEN": "No se recibió token de la autenticación.",
       "INVALID": "Correo o contraseña inválidos"
+    },
+    "navbar": {
+      "manufacturers": "Fabricantes",
+      "orders": "Órdenes",
+      "products": "Productos",
+      "signOut": "Cerrar sesión"
+    },
+    "manufacturers": {
+      "createButton": "Crear Fabricante",
+      "name": "Nombre",
+      "nit": "NIT",
+      "address": "Dirección",
+      "phone": "Teléfono",
+      "email": "Correo Electrónico",
+      "legalRepresentative": "Representante Legal",
+      "country": "País",
+      "status": "Estado",
+      "noData": "No se encontraron fabricantes.",
+      "notFoundById": "No se encontró un fabricante con ese ID.",
+      "notFoundByNit": "No se encontró un fabricante con ese NIT.",
+      "searchById": "Buscar por ID",
+      "searchByNit": "Buscar por NIT",
+      "search": "Buscar"
+    },
+    "manufacturerModal": {
+      "title": "Crear Fabricante",
+      "nameLabel": "Nombre",
+      "nitLabel": "NIT",
+      "addressLabel": "Dirección",
+      "phoneLabel": "Teléfono",
+      "emailLabel": "Correo Electrónico",
+      "legalRepresentativeLabel": "Representante Legal",
+      "countryLabel": "País",
+      "statusLabel": "Estado",
+      "cancel": "Cancelar",
+      "save": "Guardar",
+      "genericError": "Ocurrió un error al crear el fabricante.",
+      "statusActivo": "Activo",
+      "statusInactivo": "Inactivo",
+      "createTitle": "Crear Fabricante",
+      "editTitle": "Editar Fabricante",
+      "actions": "Acciones",
+      "update": "Actualizar"
+    },
+    "common": {
+      "close": "Cerrar"
     }
 }

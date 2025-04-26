@@ -26,11 +26,13 @@
       "failed": "Authentication failed. Please check your credentials."
     },
     "common": {
-      "language": "Language"
+      "language": "Language",
+      "close": "Close"
     },
     "mainPage": {
-      "title": "Welcome to the Main Page",
-      "description": "This is the landing page after signing in successfully.",
+      "title": "Welcome to Our Website!",
+      "description": "We are glad to have you here.",
+      "additionalMessage": "We are working on this page, feel free to keep navigating.",
       "signOutButton": "Sign Out"
     },
     "user": {
@@ -48,5 +50,48 @@
       "TOKEN_VALIDATION_FAILED": "Token validation failed. Please try again.",
       "NO_TOKEN": "No token received from authentication.",
       "INVALID": "Invalid email or password"
+    },
+    "navbar": {
+      "manufacturers": "Manufacturers",
+      "orders": "Orders",
+      "products": "Products",
+      "signOut": "Sign Out"
+    },
+    "manufacturers": {
+      "createButton": "Create Manufacturer",
+      "name": "Name",
+      "nit": "NIT",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "legalRepresentative": "Legal Representative",
+      "country": "Country",
+      "status": "Status",
+      "noData": "No manufacturers found.",
+      "notFoundById": "No manufacturer found with that ID.",
+      "notFoundByNit": "No manufacturer found with that NIT.",
+      "searchById": "Search by ID",
+      "searchByNit": "Search by NIT",
+      "search": "Search",
+      "actions": "Actions"
+    },
+    "manufacturerModal": {
+      "title": "Create Manufacturer",
+      "nameLabel": "Name",
+      "nitLabel": "NIT",
+      "addressLabel": "Address",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email",
+      "legalRepresentativeLabel": "Legal Representative",
+      "countryLabel": "Country",
+      "statusLabel": "Status",
+      "cancel": "Cancel",
+      "save": "Save",
+      "genericError": "An error occurred while creating the manufacturer.",
+      "statusActivo": "Active",
+      "statusInactivo": "Inactive",
+      "createTitle": "Create Manufacturer",
+      "editTitle": "Edit Manufacturer",
+      "update": "Update"
     }
 }
