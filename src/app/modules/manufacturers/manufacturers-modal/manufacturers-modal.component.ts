@@ -5,6 +5,7 @@ import { ManufacturerService } from 'src/app/modules/services/manufacturers.serv
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-manufacturers-modal',
@@ -28,7 +29,8 @@ export class ManufacturersModalComponent implements OnInit {
     public dialogRef: MatDialogRef<ManufacturersModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private snackBar: MatSnackBar,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private clipboard: Clipboard,
   ) { }
 
   ngOnInit(): void {
@@ -77,5 +79,11 @@ export class ManufacturersModalComponent implements OnInit {
   onCancel() {
     this.manufacturerForm.reset();
     this.dialogRef.close();
+  }
+
+  copyId(): void {
+    if (this.data?.id) {
+      this.clipboard.copy(this.data.id);
+    }
   }
 }

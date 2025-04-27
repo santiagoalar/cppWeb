@@ -1,4 +1,5 @@
-<h2 mat-dialog-title>
+<h2 mat-dialog-title style="display: flex; align-items: center; gap: 8px; padding-top: 12px;">
+  <mat-icon>factory</mat-icon>
   {{ data?.id ? ('manufacturerModal.editTitle' | translate) : ('manufacturerModal.createTitle' | translate) }}
 </h2>
 <mat-divider></mat-divider>
@@ -9,9 +10,12 @@
         <mat-form-field appearance="fill" color="accent" class="full-width">
           <mat-label>ID</mat-label>
           <input matInput [disabled]="true" [value]="data.id" />
+          <mat-icon matSuffix role="button" tabindex="0" class="copy-icon" (click)="copyId()">
+            content_copy
+          </mat-icon>
         </mat-form-field>
         <mat-form-field appearance="fill" color="accent" class="full-width">
-          <mat-label>{{ 'manufacturerModal.updated' | translate }}</mat-label>
+          <mat-label>{{ 'manufacturerModal.update' | translate }}</mat-label>
           <input matInput [disabled]="true" [value]="data.updatedAt | date:'short'" />
         </mat-form-field>
       </ng-container>

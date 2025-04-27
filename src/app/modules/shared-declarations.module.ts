@@ -14,11 +14,18 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { ProductsComponent } from './products/products.component';
+import { ProductFormModalComponent } from './products/product-form-modal/product-form-modal.component';
+import {  MatCardModule } from '@angular/material/card';
+import { ProductDetailsModalComponent } from './products/product-details-modal/product-details-modal.component';
 
 @NgModule({
   declarations: [
     ManufacturersComponent,
-    ManufacturersModalComponent
+    ManufacturersModalComponent,
+    ProductsComponent,
+    ProductFormModalComponent,
+    ProductDetailsModalComponent
   ],
   imports: [
     CommonModule,
@@ -34,12 +41,16 @@ import { MatDividerModule } from '@angular/material/divider';
     MatOptionModule,
     MatSelectModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCardModule
   ],
   exports: [
     TranslateModule,
     ManufacturersComponent,
-    ManufacturersModalComponent
+    ManufacturersModalComponent,
+    ProductsComponent,
+    ProductFormModalComponent,
+    ProductDetailsModalComponent,
   ]
 })
 export class SharedDeclarationsModule { }

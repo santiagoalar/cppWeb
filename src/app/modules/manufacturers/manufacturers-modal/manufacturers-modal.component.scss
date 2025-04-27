@@ -1,3 +1,14 @@
+@import '@angular/material/theming';
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$theme: mat-dark-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+
+
 .two-column-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -40,4 +51,14 @@
   ::ng-deep .snackbar-error {
     background-color: #d32f2f;
     color: #fff;
+  }
+
+  .copy-icon {
+    cursor: pointer;
+    transition: opacity 0.2s;
+  
+    &:hover {
+      opacity: 0.7;
+      color: mat-color($accent, 200);
+    }
   }

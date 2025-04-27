@@ -1,6 +1,10 @@
 <div class="main-page-container content-wrapper dark-theme" [@fadeIn]>
   <div class="manufacturers-container">
-    <div class="action-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding-top: 16px; margin-bottom: 16px;">
+    <h1 class="page-title" style="display: flex; align-items: center; gap: 8px; padding-top: 16px;">
+      <mat-icon>factory</mat-icon>
+      {{ 'manufacturers.title' | translate }}
+    </h1>
+    <div class="action-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding-top: 8px; margin-bottom: 8px;">
       <button mat-raised-button color="accent" (click)="openCreateModal()" style="margin: 0;">
         <mat-icon>add</mat-icon>
         {{ 'manufacturers.createButton' | translate }}
