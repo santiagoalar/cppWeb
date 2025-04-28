@@ -22,14 +22,14 @@ export class ManufacturerService {
   }
 
   createManufacturer(manufacturer: ManufacturerData): Observable<ManufacturerData> { 
-    return this.http.post<ManufacturerData>(`${this.apiUrl}/`, manufacturer, this.getAuthHeader());
+    return this.http.post<ManufacturerData>(`${this.apiUrl}`, manufacturer, this.getAuthHeader());
   }
 
   getAllManufacturers(nit?: string): Observable<ManufacturerData[]> {
     if (nit) {
       return this.http.get<ManufacturerData[]>(`${this.apiUrl}/search?nit=${nit}`, this.getAuthHeader());
     }
-    return this.http.get<ManufacturerData[]>(`${this.apiUrl}/`, this.getAuthHeader());
+    return this.http.get<ManufacturerData[]>(`${this.apiUrl}`, this.getAuthHeader());
   }
 
   getManufacturerById(id: string): Observable<ManufacturerData> {
