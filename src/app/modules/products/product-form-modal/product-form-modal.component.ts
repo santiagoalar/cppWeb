@@ -6,6 +6,7 @@ import { ManufacturerService } from 'src/app/modules/services/manufacturers.serv
 import { ManufacturerData } from 'src/app/models/manufacturer-data.model';
 import { ProductData } from 'src/app/models/product-data.model';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-product-form-modal',
@@ -29,6 +30,7 @@ export class ProductFormModalComponent implements OnInit {
     private productsService: ProductsService,
     private manufacturerService: ManufacturerService,
     private dialogRef: MatDialogRef<ProductFormModalComponent>,
+    private auth: AuthService,
     @Inject(MAT_DIALOG_DATA) public data?: ProductData
   ) {}
 
@@ -133,5 +135,9 @@ export class ProductFormModalComponent implements OnInit {
 
   onCancel(): void {
     this.dialogRef.close(false);
+  }
+
+  isDirectivo(): boolean {
+    return this.auth.isUserDirectivo();
   }
 }

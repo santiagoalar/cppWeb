@@ -5,7 +5,7 @@
       CCP
     </div>
     <div class="nav-links">
-      <a mat-button routerLink="/manufacturers">
+      <a *ngIf="isDirectivo()" mat-button routerLink="/manufacturers">
         <mat-icon>domain</mat-icon>
         {{ 'navbar.manufacturers' | translate }}
       </a>

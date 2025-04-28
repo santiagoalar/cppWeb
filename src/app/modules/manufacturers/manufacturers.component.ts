@@ -6,6 +6,7 @@ import { ManufacturersModalComponent } from 'src/app/modules/manufacturers/manuf
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-manufacturers',
@@ -34,7 +35,8 @@ export class ManufacturersComponent implements OnInit {
     private manufacturerService: ManufacturerService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -115,5 +117,9 @@ export class ManufacturersComponent implements OnInit {
         });
       }
     });
+  }
+
+  isDirectivo(): boolean {
+    return this.auth.isUserDirectivo();
   }
 }

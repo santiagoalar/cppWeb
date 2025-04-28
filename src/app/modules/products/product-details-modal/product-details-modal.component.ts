@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductData } from 'src/app/models/product-data.model';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-product-details-modal',
@@ -22,6 +23,7 @@ export class ProductDetailsModalComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<ProductDetailsModalComponent>,
+    private auth: AuthService,
     @Inject(MAT_DIALOG_DATA) public product: ProductData
   ) {}
 
@@ -47,4 +49,15 @@ export class ProductDetailsModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  isDirectivo() {
+    return this.auth.isUserDirectivo();
+  }
+
+  copyToClipboard(value: string) {
+    navigator.clipboard.writeText(value).then(() => {
+      console.log('Copied to clipboard successfully!');
+    }).catch(err => {
+      console.error('Could not copy text: ', err);
+    });
+  }
 }

@@ -11,4 +11,6 @@ export interface ProductData {
     deliveryTime: number;
     images: string[];
     stock: number;
+    created_at: string;
+    updated_at: string;
   }

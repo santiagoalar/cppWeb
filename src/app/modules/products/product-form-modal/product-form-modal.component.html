@@ -94,7 +94,7 @@
 
 </form>
 <mat-dialog-actions align="end" [@fadeIn]>
-  <button mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid" (click)="onSave()" style="display: flex; align-items: center; gap: 4px;">
+  <button *ngIf="isDirectivo()" mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid" (click)="onSave()" style="display: flex; align-items: center; gap: 4px;">
     <mat-icon>save</mat-icon>
     {{ data ? ('PRODUCT_FORM.BUTTON.UPDATE' | translate) : ('PRODUCT_FORM.BUTTON.SAVE' | translate) }}
   </button>

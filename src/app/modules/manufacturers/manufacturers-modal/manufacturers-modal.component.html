@@ -61,7 +61,7 @@
       <mat-icon>close</mat-icon>
       {{ 'manufacturerModal.cancel' | translate }}
     </button>
-    <button mat-raised-button color="accent" type="submit">
+    <button *ngIf="isDirectivo()" mat-raised-button color="accent" type="submit" [disabled]="manufacturerForm.invalid">
       <mat-icon>{{ data?.id ? 'save' : 'add' }}</mat-icon>
       {{ data?.id ? ('manufacturerModal.update' | translate) : ('manufacturerModal.save' | translate) }}
     </button>

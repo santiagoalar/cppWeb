@@ -5,6 +5,9 @@ import { ProductsService } from 'src/app/modules/services/products.service';
 import { ProductData } from 'src/app/models/product-data.model';
 import { ProductDetailsModalComponent } from './product-details-modal/product-details-modal.component';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AuthService } from 'src/app/auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products',
@@ -26,7 +29,10 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private auth: AuthService,
+    private snackBar: MatSnackBar,
+    private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -93,11 +99,21 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  searchById(): void {
-    if (!this.searchId) { return; }
+  searchById() {
+    if (!this.searchId) {
+      return;
+    }
+
     this.productsService.getProductById(this.searchId).subscribe({
-      next: product => this.products = [product],
-      error: err => console.error('Error fetching product by ID', err)
+      next: product => {
+        this.openDetailsModal(product);
+      },
+      error: err => {
+        this.translate.get('ALERTS.PRODUCT_NOT_FOUND').subscribe(message => {
+          this.snackBar.open(message, 'OK', { duration: 3000 });
+        });
+        console.error('Error fetching product', err);
+      }
     });
   }
 
@@ -112,5 +128,9 @@ export class ProductsComponent implements OnInit {
         this.openUpdateProductModal(result.id);
       }
     });
+  }
+
+  isDirectivo(): boolean {
+    return this.auth.isUserDirectivo();
   }
 }
