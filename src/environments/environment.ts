@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiBaseUrl: 'http://localhost:5001',
+    apiBaseUrl: 'http://api.misw4502-ccp.com',
   };
