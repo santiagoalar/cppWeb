@@ -1,96 +1,139 @@
 {
-    "auth": {
-      "signIn": {
-        "title": "Iniciar Sesión",
-        "email": "Correo Electrónico",
-        "password": "Contraseña",
-        "submitButton": "Iniciar Sesión",
-        "noAccount": "¿No tienes cuenta? Regístrate",
-        "failed": "La autenticación ha fallado. Por favor, verifica tus credenciales."
-      },
-      "signUp": {
-        "title": "Registro",
-        "username": "Nombre de Usuario",
-        "phone": "Teléfono",
-        "role": "Rol",
-        "email": "Correo Electrónico",
-        "password": "Contraseña",
-        "submitButton": "Registrarse",
-        "haveAccount": "¿Ya tienes cuenta? Inicia Sesión"
-      },
-      "roles": {
-        "customer": "Cliente",
-        "salesman": "Vendedor",
-        "director": "Directivo",
-        "transport": "Transportista"
-      }
+  "auth": {
+    "signIn": {
+      "title": "Iniciar Sesión",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "submitButton": "Iniciar Sesión",
+      "noAccount": "¿No tienes cuenta? Regístrate",
+      "failed": "La autenticación ha fallado. Por favor, verifica tus credenciales."
     },
-    "mainPage": {
-      "title": "¡Bienvenido a nuestro sitio web!",
-      "description": "Nos alegra tenerte aquí.",
-      "additionalMessage": "Estamos trabajando en esta página, siéntete libre de continuar navegando.",
-      "signOutButton": "Cerrar Sesión"
+    "signUp": {
+      "title": "Registro",
+      "username": "Nombre de Usuario",
+      "phone": "Teléfono",
+      "role": "Rol",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "submitButton": "Registrarse",
+      "haveAccount": "¿Ya tienes cuenta? Inicia Sesión"
     },
-    "user": {
-      "info": {
-        "title": "Información del Usuario",
-        "signOut": "Cerrar Sesión"
-      }
-    },
-    "ALERTS": {
+    "roles": {
+      "customer": "Cliente",
+      "salesman": "Vendedor",
+      "director": "Directivo",
+      "transport": "Transportista"
+    }
+  },
+  "mainPage": {
+    "title": "¡Bienvenido a nuestro sitio web!",
+    "description": "Nos alegra tenerte aquí.",
+    "additionalMessage": "Estamos trabajando en esta página, siéntete libre de continuar navegando.",
+    "signOutButton": "Cerrar Sesión"
+  },
+  "user": {
+    "info": {
+      "title": "Información del Usuario",
+      "signOut": "Cerrar Sesión"
+    }
+  },
+  "ALERTS": {
     "SIGN_IN_FIRST": "Por favor, inicia sesión primero.",
     "SESSION_EXPIRED": "La sesión ha expirado. Por favor, inicia sesión de nuevo."
+  },
+  "Close": "Cerrar",
+  "SIGN_IN_ERROR": {
+    "TOKEN_VALIDATION_FAILED": "La validación del token falló. Por favor, inténtalo de nuevo.",
+    "NO_TOKEN": "No se recibió token de la autenticación.",
+    "INVALID": "Correo o contraseña inválidos"
+  },
+  "navbar": {
+    "manufacturers": "Fabricantes",
+    "orders": "Órdenes",
+    "products": "Productos",
+    "signOut": "Cerrar sesión"
+  },
+  "manufacturers": {
+    "title": "Fabricantes",
+    "createButton": "Crear Fabricante",
+    "name": "Nombre",
+    "nit": "NIT",
+    "address": "Dirección",
+    "phone": "Teléfono",
+    "email": "Correo Electrónico",
+    "legalRepresentative": "Representante Legal",
+    "country": "País",
+    "status": "Estado",
+    "noData": "No se encontraron fabricantes.",
+    "notFoundById": "No se encontró un fabricante con ese ID.",
+    "notFoundByNit": "No se encontró un fabricante con ese NIT.",
+    "searchById": "Buscar por ID",
+    "searchByNit": "Buscar por NIT",
+    "search": "Buscar"
+  },
+  "manufacturerModal": {
+    "title": "Crear Fabricante",
+    "nameLabel": "Nombre",
+    "nitLabel": "NIT",
+    "addressLabel": "Dirección",
+    "phoneLabel": "Teléfono",
+    "emailLabel": "Correo Electrónico",
+    "legalRepresentativeLabel": "Representante Legal",
+    "countryLabel": "País",
+    "statusLabel": "Estado",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "genericError": "Ocurrió un error al crear el fabricante.",
+    "statusActivo": "Activo",
+    "statusInactivo": "Inactivo",
+    "createTitle": "Crear Fabricante",
+    "editTitle": "Editar Fabricante",
+    "actions": "Acciones",
+    "update": "Actualizar"
+  },
+  "common": {
+    "close": "Cerrar"
+  },
+  "PRODUCT_FORM": {
+    "TITLE": "Crear Producto",
+    "TITLE_CREATE": "Crear Producto",
+    "TITLE_UPDATE": "Actualizar Producto",
+    "LABEL": {
+      "NAME": "Nombre",
+      "BRAND": "Marca",
+      "MANUFACTURER_ID": "ID Fabricante",
+      "DESCRIPTION": "Descripción",
+      "DETAILS": "Detalles",
+      "DETAIL_KEY": "Clave",
+      "DETAIL_VALUE": "Valor",
+      "STORAGE_CONDITIONS": "Condiciones de Almacenamiento",
+      "PRICE": "Precio",
+      "CURRENCY": "Moneda",
+      "DELIVERY_TIME": "Tiempo de Entrega (días)",
+      "IMAGES": "Imágenes",
+      "IMAGE_URL": "URL Imagen",
+      "STOCK": "Inventario"
     },
-    "Close": "Cerrar",
-    "SIGN_IN_ERROR": {
-      "TOKEN_VALIDATION_FAILED": "La validación del token falló. Por favor, inténtalo de nuevo.",
-      "NO_TOKEN": "No se recibió token de la autenticación.",
-      "INVALID": "Correo o contraseña inválidos"
-    },
-    "navbar": {
-      "manufacturers": "Fabricantes",
-      "orders": "Órdenes",
-      "products": "Productos",
-      "signOut": "Cerrar sesión"
-    },
-    "manufacturers": {
-      "createButton": "Crear Fabricante",
-      "name": "Nombre",
-      "nit": "NIT",
-      "address": "Dirección",
-      "phone": "Teléfono",
-      "email": "Correo Electrónico",
-      "legalRepresentative": "Representante Legal",
-      "country": "País",
-      "status": "Estado",
-      "noData": "No se encontraron fabricantes.",
-      "notFoundById": "No se encontró un fabricante con ese ID.",
-      "notFoundByNit": "No se encontró un fabricante con ese NIT.",
-      "searchById": "Buscar por ID",
-      "searchByNit": "Buscar por NIT",
-      "search": "Buscar"
-    },
-    "manufacturerModal": {
-      "title": "Crear Fabricante",
-      "nameLabel": "Nombre",
-      "nitLabel": "NIT",
-      "addressLabel": "Dirección",
-      "phoneLabel": "Teléfono",
-      "emailLabel": "Correo Electrónico",
-      "legalRepresentativeLabel": "Representante Legal",
-      "countryLabel": "País",
-      "statusLabel": "Estado",
-      "cancel": "Cancelar",
-      "save": "Guardar",
-      "genericError": "Ocurrió un error al crear el fabricante.",
-      "statusActivo": "Activo",
-      "statusInactivo": "Inactivo",
-      "createTitle": "Crear Fabricante",
-      "editTitle": "Editar Fabricante",
-      "actions": "Acciones",
-      "update": "Actualizar"
-    },
-    "common": {
-      "close": "Cerrar"
+    "BUTTON": {
+      "CANCEL": "Cancelar",
+      "SAVE": "Guardar",
+      "UPDATE": "Actualizar",
+      "ADD_DETAIL": "Agregar detalle",
+      "REMOVE_DETAIL": "Eliminar detalle",
+      "ADD_IMAGE": "Agregar imagen",
+      "REMOVE_IMAGE": "Eliminar imagen"
     }
+  },
+  "PRODUCTS": {
+    "PAGE_TITLE": "Productos",
+    "BUTTON": {
+      "CREATE": "Crear Producto",
+      "SAVE": "Guardar",
+      "UPDATE": "Actualizar",
+      "DELETE": "Eliminar",
+      "SEARCH": "Buscar",
+      "CANCEL": "Cerrar"
+    },
+    "SEARCH_BY_ID": "Buscar por ID"
+  }
 }
