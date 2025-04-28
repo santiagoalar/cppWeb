@@ -1,0 +1,69 @@
+<h2 mat-dialog-title style="display: flex; align-items: center; gap: 8px; padding-top: 12px;">
+  <mat-icon>factory</mat-icon>
+  {{ data?.id ? ('manufacturerModal.editTitle' | translate) : ('manufacturerModal.createTitle' | translate) }}
+</h2>
+<mat-divider></mat-divider>
+<form [formGroup]="manufacturerForm" (ngSubmit)="onSubmit()" class="manufacturer-modal-form" style="padding-top: 10px;" [@fadeIn]>
+  <mat-dialog-content>
+    <div class="two-column-grid">
+      <ng-container *ngIf="data?.id">
+        <mat-form-field appearance="fill" color="accent" class="full-width">
+          <mat-label>ID</mat-label>
+          <input matInput [disabled]="true" [value]="data.id" />
+          <mat-icon matSuffix role="button" tabindex="0" class="copy-icon" (click)="copyId()">
+            content_copy
+          </mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill" color="accent" class="full-width">
+          <mat-label>{{ 'manufacturerModal.update' | translate }}</mat-label>
+          <input matInput [disabled]="true" [value]="data.updatedAt | date:'short'" />
+        </mat-form-field>
+      </ng-container>
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'manufacturerModal.nameLabel' | translate }}</mat-label>
+        <input matInput formControlName="name" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'manufacturerModal.nitLabel' | translate }}</mat-label>
+        <input matInput formControlName="nit" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'manufacturerModal.addressLabel' | translate }}</mat-label>
+        <input matInput formControlName="address" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'manufacturerModal.phoneLabel' | translate }}</mat-label>
+        <input matInput formControlName="phone" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'manufacturerModal.emailLabel' | translate }}</mat-label>
+        <input matInput formControlName="email" required email />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'manufacturerModal.legalRepresentativeLabel' | translate }}</mat-label>
+        <input matInput formControlName="legal_representative" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'manufacturerModal.countryLabel' | translate }}</mat-label>
+        <input matInput formControlName="country" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'manufacturerModal.statusLabel' | translate }}</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option value="ACTIVO">{{ 'manufacturerModal.statusActivo' | translate }}</mat-option>
+          <mat-option value="INACTIVO">{{ 'manufacturerModal.statusInactivo' | translate }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" class="manufacturer-dialog-actions mt-8">
+    <button mat-button type="button" (click)="onCancel()">
+      <mat-icon>close</mat-icon>
+      {{ 'manufacturerModal.cancel' | translate }}
+    </button>
+    <button *ngIf="isDirectivo()" mat-raised-button color="accent" type="submit" [disabled]="manufacturerForm.invalid">
+      <mat-icon>{{ data?.id ? 'save' : 'add' }}</mat-icon>
+      {{ data?.id ? ('manufacturerModal.update' | translate) : ('manufacturerModal.save' | translate) }}
+    </button>
+  </mat-dialog-actions>
+</form>

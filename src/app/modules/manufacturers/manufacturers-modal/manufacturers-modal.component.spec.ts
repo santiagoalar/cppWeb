@@ -1,20 +1,20 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { LanguageService } from './language-service.component';
+import { ManufacturersModalComponent } from './manufacturers-modal.component';
 
-describe('LanguageServiceComponent', () => {
-  let component: LanguageService;
-  let fixture: ComponentFixture<LanguageService>;
+describe('ManufacturersModalComponent', () => {
+  let component: ManufacturersModalComponent;
+  let fixture: ComponentFixture<ManufacturersModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LanguageService ]
+      declarations: [ ManufacturersModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LanguageService);
+    fixture = TestBed.createComponent(ManufacturersModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

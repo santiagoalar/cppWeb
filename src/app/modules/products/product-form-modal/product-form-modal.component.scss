@@ -1,0 +1,48 @@
+@import '@angular/material/theming';
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$theme: mat-dark-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+
+.product-form {
+    .form-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+  
+      .full-width {
+        flex: 1;
+      }
+    }
+  
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin-bottom: 16px;
+  
+      legend {
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+  
+      .detail-row,
+      .image-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+  
+        mat-form-field {
+          flex: 1;
+        }
+      }
+    }
+  
+    mat-dialog-actions {
+      margin-top: 16px;
+    }
+  }

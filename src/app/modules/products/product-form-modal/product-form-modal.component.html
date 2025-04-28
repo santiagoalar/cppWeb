@@ -1,0 +1,105 @@
+<h2 mat-dialog-title style="display: flex; align-items: center; gap: 8px; padding-top: 12px;">
+  <mat-icon>inventory_2</mat-icon>
+  {{ data ? ('PRODUCT_FORM.TITLE_UPDATE' | translate) : ('PRODUCT_FORM.TITLE_CREATE' | translate) }}
+</h2>
+<mat-divider></mat-divider>
+<form [formGroup]="productForm" (ngSubmit)="onSave()" mat-dialog-content class="product-form"  [@fadeIn]>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" color="accent" class="full-width">
+      <mat-label>{{ 'PRODUCT_FORM.LABEL.NAME'   | translate }}</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill" color="accent" class="full-width">
+      <mat-label>{{ 'PRODUCT_FORM.LABEL.BRAND'  | translate }}</mat-label>
+      <input matInput formControlName="brand" required>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" color="accent" class="full-width">
+      <mat-label>{{ 'PRODUCT_FORM.LABEL.MANUFACTURER_ID' | translate }}</mat-label>
+      <mat-select formControlName="manufacturerId" required>
+        <mat-option *ngFor="let m of manufacturers" [value]="m.id">
+          {{ m.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" color="accent" class="full-width">
+      <mat-label>{{ 'PRODUCT_FORM.LABEL.STOCK' | translate }}</mat-label>
+      <input matInput type="number" formControlName="stock" required>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" color="accent" class="full-width">
+      <mat-label>{{ 'PRODUCT_FORM.LABEL.DESCRIPTION' | translate }}</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+
+  <fieldset formArrayName="details" class="details-group">
+    <legend>{{ 'PRODUCT_FORM.LABEL.DETAILS' | translate }}</legend>
+    <div *ngFor="let detail of details.controls; let i = index" [formGroupName]="i" class="detail-row">
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>{{ 'PRODUCT_FORM.LABEL.DETAIL_KEY'   | translate }}</mat-label>
+        <input matInput formControlName="key" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" color="accent">
+        <mat-label>{{ 'PRODUCT_FORM.LABEL.DETAIL_VALUE' | translate }}</mat-label>
+        <input matInput formControlName="value" required>
+      </mat-form-field>
+      <button mat-icon-button type="button" (click)="removeDetail(i)" [attr.aria-label]="'PRODUCT_FORM.BUTTON.REMOVE_DETAIL' | translate">
+        <mat-icon>remove_circle</mat-icon>
+      </button>
+    </div>
+    <button mat-button type="button" (click)="addDetail()">{{ 'PRODUCT_FORM.BUTTON.ADD_DETAIL' | translate }}</button>
+  </fieldset>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" color="accent" class="full-width">
+      <mat-label>{{ 'PRODUCT_FORM.LABEL.STORAGE_CONDITIONS' | translate }}</mat-label>
+      <input matInput formControlName="storageConditions">
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" color="accent">
+      <mat-label>{{ 'PRODUCT_FORM.LABEL.PRICE'         | translate }}</mat-label>
+      <input matInput type="number" formControlName="price" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill" color="accent">
+      <mat-label>{{ 'PRODUCT_FORM.LABEL.CURRENCY'      | translate }}</mat-label>
+      <input matInput formControlName="currency" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill" color="accent">
+      <mat-label>{{ 'PRODUCT_FORM.LABEL.DELIVERY_TIME' | translate }}</mat-label>
+      <input matInput type="number" formControlName="deliveryTime" required>
+    </mat-form-field>
+  </div>
+
+  <fieldset formArrayName="images" class="images-group">
+    <legend>{{ 'PRODUCT_FORM.LABEL.IMAGES' | translate }}</legend>
+    <div *ngFor="let imgCtrl of images.controls; let i = index" class="image-row">
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'PRODUCT_FORM.LABEL.IMAGE_URL' | translate }}</mat-label>
+        <input matInput [formControlName]="i">
+      </mat-form-field>
+      <button mat-icon-button type="button" (click)="removeImage(i)" [attr.aria-label]="'PRODUCT_FORM.BUTTON.REMOVE_IMAGE' | translate">
+        <mat-icon>remove_circle</mat-icon>
+      </button>
+    </div>
+    <button mat-button type="button" (click)="addImage()">{{ 'PRODUCT_FORM.BUTTON.ADD_IMAGE' | translate }}</button>
+  </fieldset>
+
+</form>
+<mat-dialog-actions align="end" [@fadeIn]>
+  <button *ngIf="isDirectivo()" mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid" (click)="onSave()" style="display: flex; align-items: center; gap: 4px;">
+    <mat-icon>save</mat-icon>
+    {{ data ? ('PRODUCT_FORM.BUTTON.UPDATE' | translate) : ('PRODUCT_FORM.BUTTON.SAVE' | translate) }}
+  </button>
+  <button mat-button type="button" (click)="onCancel()" style="display: flex; align-items: center; gap: 4px;">
+    <mat-icon>close</mat-icon>
+    {{ 'PRODUCT_FORM.BUTTON.CANCEL' | translate }}
+  </button>
+</mat-dialog-actions>

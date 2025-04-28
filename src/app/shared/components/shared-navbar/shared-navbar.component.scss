@@ -1,0 +1,152 @@
+@import '@angular/material/theming';
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$theme: mat-dark-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+
+.navbar {
+  height: 56px;
+  background-color: #424242;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-inner {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-sizing: border-box;
+  gap: 24px;
+}
+
+.navbar .app-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: mat-color($accent, 400);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 20px;
+  font-size: 1em;
+  color: white;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.navbar .actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar .actions mat-icon {
+  color: white;
+  cursor: pointer;
+}
+
+.navbar .actions button {
+  color: white;
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+.navbar .nav-links a:hover,
+.navbar .actions button:hover,
+.navbar .actions mat-icon:hover,
+.mat-menu-content button:hover {
+  color: mat-color($accent);
+  text-shadow: 0 0 5px mat-color($accent, 200);
+  background: none;
+  text-decoration: none;
+}
+
+.navbar .app-title .logo {
+  height: 32px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+::ng-deep .user-info-menu {
+  background: #424242;
+  color: #fff;
+  overflow: hidden;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+::ng-deep .user-info-menu .user-header {
+  text-align: center;
+  background-color: mat-color($accent, 800);
+  padding: 16px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+::ng-deep .user-info-menu .user-header .user-name {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: mat-color($accent, 50);
+  margin: 0 0 4px;
+}
+
+::ng-deep .user-info-menu .user-header .user-role {
+  font-size: 1em;
+  color: mat-color($accent, 200);
+  margin: 0;
+}
+
+::ng-deep .user-info-menu .user-contact {
+  background-color: #333;
+  padding: 12px 16px;
+  border-top: 1px solid mat-color($accent, 700);
+  border-bottom: 1px solid mat-color($accent, 700);
+}
+
+::ng-deep .user-info-menu .user-contact .user-email,
+::ng-deep .user-info-menu .user-contact .user-phone {
+  margin: 6px 0;
+}
+
+::ng-deep .user-info-menu .user-footer {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  background: #303030;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+::ng-deep .user-info-menu .user-footer button {
+  width: 100%;
+  justify-content: start;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 1em;
+  transition: background 0.2s;
+}
+
+::ng-deep .user-info-menu .user-footer button:hover {
+  background: rgba(255, 64, 129, 0.1);
+}

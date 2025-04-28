@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = `${environment.apiBaseUrl}/bff/v1/web/users/`;
+  private apiUrl = `${environment.apiBaseUrl}/bff/v1/web/users/`;
 
   constructor(private http: HttpClient) {}
 
@@ -20,5 +20,16 @@ export class AuthService {
     const url = `${this.apiUrl}auth`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(url, data, { headers });
+  }
+
+  validateToken(token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.get(`${this.apiUrl}me`, { headers });
+  }
+
+  isUserDirectivo(): boolean {
+    return localStorage.getItem('userRole') === 'DIRECTIVO';
   }
 }

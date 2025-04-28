@@ -1,19 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MainPageComponent } from './main-page.component';
 
-describe('MainPageComponent', () => {
-  let component: MainPageComponent;
-  let fixture: ComponentFixture<MainPageComponent>;
+import { SharedLayoutComponent } from './shared-layout.component';
+
+describe('SharedLayoutComponent', () => {
+  let component: SharedLayoutComponent;
+  let fixture: ComponentFixture<SharedLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPageComponent ]
+      declarations: [ SharedLayoutComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainPageComponent);
+    fixture = TestBed.createComponent(SharedLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

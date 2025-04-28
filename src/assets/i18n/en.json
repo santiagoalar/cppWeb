@@ -1,42 +1,143 @@
 {
-    "auth": {
-      "signIn": {
-        "title": "Sign In",
-        "email": "Email",
-        "password": "Password",
-        "submitButton": "Sign In",
-        "noAccount": "Don't have an account? Sign Up"
-      },
-      "signUp": {
-        "title": "Sign Up",
-        "username": "Username",
-        "phone": "Phone",
-        "role": "Role",
-        "email": "Email",
-        "password": "Password",
-        "submitButton": "Sign Up",
-        "haveAccount": "Already have an account? Sign In"
-      },
-      "roles": {
-        "customer": "Customer",
-        "salesman": "Salesman",
-        "director": "Director",
-        "transport": "Transport"
-      },
-      "failed": "Authentication failed. Please check your credentials."
+  "auth": {
+    "signIn": {
+      "title": "Sign In",
+      "email": "Email",
+      "password": "Password",
+      "submitButton": "Sign In",
+      "noAccount": "Don't have an account? Sign Up"
     },
-    "common": {
-      "language": "Language"
+    "signUp": {
+      "title": "Sign Up",
+      "username": "Username",
+      "phone": "Phone",
+      "role": "Role",
+      "email": "Email",
+      "password": "Password",
+      "submitButton": "Sign Up",
+      "haveAccount": "Already have an account? Sign In"
     },
-    "mainPage": {
-      "title": "Welcome to the Main Page",
-      "description": "This is the landing page after signing in successfully.",
-      "signOutButton": "Sign Out"
+    "roles": {
+      "customer": "Customer",
+      "salesman": "Salesman",
+      "director": "Director",
+      "transport": "Transport"
     },
-    "user": {
-      "info": {
-        "title": "User Information",
-        "signOut": "Sign Out"
-      }
+    "failed": "Authentication failed. Please check your credentials."
+  },
+  "common": {
+    "language": "Language",
+    "close": "Close"
+  },
+  "mainPage": {
+    "title": "Welcome to Our Website!",
+    "description": "We are glad to have you here.",
+    "additionalMessage": "We are working on this page, feel free to keep navigating.",
+    "signOutButton": "Sign Out"
+  },
+  "user": {
+    "info": {
+      "title": "User Information",
+      "signOut": "Sign Out"
     }
+  },
+  "ALERTS": {
+    "SIGN_IN_FIRST": "Please sign in first.",
+    "SESSION_EXPIRED": "Session expired. Please sign in again.",
+    "PRODUCT_NOT_FOUND": "Product not found."
+  },
+  "Close": "Close",
+  "SIGN_IN_ERROR": {
+    "TOKEN_VALIDATION_FAILED": "Token validation failed. Please try again.",
+    "NO_TOKEN": "No token received from authentication.",
+    "INVALID": "Invalid email or password"
+  },
+  "navbar": {
+    "manufacturers": "Manufacturers",
+    "orders": "Orders",
+    "products": "Products",
+    "signOut": "Sign Out"
+  },
+  "manufacturers": {
+    "title": "Manufacturers",
+    "createButton": "Create Manufacturer",
+    "name": "Name",
+    "nit": "NIT",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "legalRepresentative": "Legal Representative",
+    "country": "Country",
+    "status": "Status",
+    "noData": "No manufacturers found.",
+    "notFoundById": "No manufacturer found with that ID.",
+    "notFoundByNit": "No manufacturer found with that NIT.",
+    "searchById": "Search by ID",
+    "searchByNit": "Search by NIT",
+    "search": "Search",
+    "actions": "Actions"
+  },
+  "manufacturerModal": {
+    "title": "Create Manufacturer",
+    "nameLabel": "Name",
+    "nitLabel": "NIT",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "legalRepresentativeLabel": "Legal Representative",
+    "countryLabel": "Country",
+    "statusLabel": "Status",
+    "cancel": "Cancel",
+    "save": "Save",
+    "genericError": "An error occurred while creating the manufacturer.",
+    "statusActivo": "Active",
+    "statusInactivo": "Inactive",
+    "createTitle": "Create Manufacturer",
+    "editTitle": "Edit Manufacturer",
+    "update": "Update"
+  },
+  "PRODUCT_FORM": {
+    "TITLE": "Create Product",
+    "TITLE_CREATE": "Create Product",
+    "TITLE_UPDATE": "Update Product",
+    "LABEL": {
+      "NAME": "Name",
+      "BRAND": "Brand",
+      "MANUFACTURER_ID": "Manufacturer ID",
+      "DESCRIPTION": "Description",
+      "DETAILS": "Details",
+      "DETAIL_KEY": "Key",
+      "DETAIL_VALUE": "Value",
+      "STORAGE_CONDITIONS": "Storage Conditions",
+      "PRICE": "Price",
+      "CURRENCY": "Currency",
+      "DELIVERY_TIME": "Delivery Time (days)",
+      "IMAGES": "Images",
+      "IMAGE_URL": "Image URL",
+      "STOCK": "Stock"
+    },
+    "BUTTON": {
+      "CANCEL": "Cancel",
+      "SAVE": "Save",
+      "UPDATE": "Update",
+      "ADD_DETAIL": "Add Detail",
+      "REMOVE_DETAIL": "Remove Detail",
+      "ADD_IMAGE": "Add Image",
+      "REMOVE_IMAGE": "Remove Image"
+    }
+  },
+  "PRODUCTS": {
+    "PAGE_TITLE": "Products",
+    "CREATED_AT": "Created At",
+    "UPDATED_AT": "Updated At",
+    "BUTTON": {
+      "CREATE": "Create Product",
+      "SAVE": "Save",
+      "UPDATE": "Update",
+      "DELETE": "Delete",
+      "SEARCH": "Search",
+      "CANCEL": "Close"
+    },
+    "SEARCH_BY_ID": "Search by ID"
+  }
 }
