@@ -28,4 +28,8 @@ export class AuthService {
     });
     return this.http.get(`${this.apiUrl}me`, { headers });
   }
+
+  isUserDirectivo(): boolean {
+    return localStorage.getItem('userRole') === 'DIRECTIVO';
+  }
 }

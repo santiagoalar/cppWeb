@@ -39,7 +39,8 @@
   },
   "ALERTS": {
     "SIGN_IN_FIRST": "Por favor, inicia sesión primero.",
-    "SESSION_EXPIRED": "La sesión ha expirado. Por favor, inicia sesión de nuevo."
+    "SESSION_EXPIRED": "La sesión ha expirado. Por favor, inicia sesión de nuevo.",
+    "PRODUCT_NOT_FOUND": "Producto no encontrado."
   },
   "Close": "Cerrar",
   "SIGN_IN_ERROR": {
@@ -126,6 +127,8 @@
   },
   "PRODUCTS": {
     "PAGE_TITLE": "Productos",
+    "CREATED_AT": "Creado en",
+    "UPDATED_AT": "Actualizado en",
     "BUTTON": {
       "CREATE": "Crear Producto",
       "SAVE": "Guardar",

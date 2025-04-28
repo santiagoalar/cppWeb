@@ -43,7 +43,8 @@
   },
   "ALERTS": {
     "SIGN_IN_FIRST": "Please sign in first.",
-    "SESSION_EXPIRED": "Session expired. Please sign in again."
+    "SESSION_EXPIRED": "Session expired. Please sign in again.",
+    "PRODUCT_NOT_FOUND": "Product not found."
   },
   "Close": "Close",
   "SIGN_IN_ERROR": {
@@ -127,6 +128,8 @@
   },
   "PRODUCTS": {
     "PAGE_TITLE": "Products",
+    "CREATED_AT": "Created At",
+    "UPDATED_AT": "Updated At",
     "BUTTON": {
       "CREATE": "Create Product",
       "SAVE": "Save",

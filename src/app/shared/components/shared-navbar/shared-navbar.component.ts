@@ -25,7 +25,8 @@ export class SharedNavbarComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private translate: TranslateService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
     this.currentLang = this.translate.currentLang || 'en';
   }
@@ -56,5 +57,9 @@ export class SharedNavbarComponent implements OnInit {
   signOut(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/sign-in']);
+  }
+
+  isDirectivo(): boolean {
+    return this.auth.isUserDirectivo();
   }
 }

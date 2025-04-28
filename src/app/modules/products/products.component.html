@@ -5,7 +5,7 @@
       {{ 'PRODUCTS.PAGE_TITLE' | translate }}
     </h1>
     <div class="action-bar" style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 8px 0;">
-      <button mat-raised-button color="accent" (click)="openCreateProductModal()" style="margin-right: auto;">
+      <button *ngIf="isDirectivo()" mat-raised-button color="accent" (click)="openCreateProductModal()" style="margin-right: auto;">
         <mat-icon>add</mat-icon>
         {{ 'PRODUCTS.BUTTON.CREATE' | translate }}
       </button>
@@ -43,10 +43,10 @@
         <button mat-icon-button (click)="openDetailsModal(product)">
           <mat-icon>info</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="openUpdateProductModal(product.id)">
+        <button *ngIf="isDirectivo()" mat-icon-button color="accent" (click)="openUpdateProductModal(product.id)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" (click)="deleteProduct(product.id)">
+        <button *ngIf="isDirectivo()" mat-icon-button color="warn" (click)="deleteProduct(product.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-card-actions>

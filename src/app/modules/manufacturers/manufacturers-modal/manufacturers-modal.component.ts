@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { AuthService } from 'src/app/auth/auth.service';
+AuthService
 
 @Component({
   selector: 'app-manufacturers-modal',
@@ -31,6 +33,7 @@ export class ManufacturersModalComponent implements OnInit {
     private snackBar: MatSnackBar,
     private translate: TranslateService,
     private clipboard: Clipboard,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -85,5 +88,9 @@ export class ManufacturersModalComponent implements OnInit {
     if (this.data?.id) {
       this.clipboard.copy(this.data.id);
     }
+  }
+
+  isDirectivo(): boolean {
+    return this.auth.isUserDirectivo();
   }
 }
