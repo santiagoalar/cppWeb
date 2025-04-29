@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ProductsService {
-  private apiUrl = `${environment.apiBaseUrl}/bff/v1/web/products`;
+  private apiUrl = `${environment.apiBaseUrl}/bff/v1/web/products/`;
 
   constructor(private http: HttpClient) {}
 
@@ -30,11 +30,11 @@ export class ProductsService {
   }
 
   getProductById(id: string): Observable<ProductData> {
-    return this.http.get<ProductData>(`${this.apiUrl}/${id}`, this.getAuthHeader());
+    return this.http.get<ProductData>(`${this.apiUrl}${id}`, this.getAuthHeader());
   }
 
   updateProduct(id: string, product: ProductData): Observable<ProductData> {
-    return this.http.put<ProductData>(`${this.apiUrl}/${id}`, product, this.getAuthHeader());
+    return this.http.put<ProductData>(`${this.apiUrl}${id}`, product, this.getAuthHeader());
   }
 
   deleteProduct(id: string): Observable<any> {
