@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ManufacturerService {
-    private apiUrl = `${environment.apiBaseUrl}/bff/v1/web/manufacturers`;
+    private apiUrl = `${environment.apiBaseUrl}/bff/v1/web/manufacturers/`;
 
   constructor(private http: HttpClient) {}
 
@@ -33,18 +33,18 @@ export class ManufacturerService {
   }
 
   getManufacturerById(id: string): Observable<ManufacturerData> {
-    return this.http.get<ManufacturerData>(`${this.apiUrl}/${id}`, this.getAuthHeader());
+    return this.http.get<ManufacturerData>(`${this.apiUrl}${id}`, this.getAuthHeader());
   }
 
   updateManufacturer(id: string, manufacturer: ManufacturerData): Observable<ManufacturerData> {
-    return this.http.put<ManufacturerData>(`${this.apiUrl}/${id}`, manufacturer, this.getAuthHeader());
+    return this.http.put<ManufacturerData>(`${this.apiUrl}${id}`, manufacturer, this.getAuthHeader());
   }
 
   getManufacturerByNit(nit: string): Observable<ManufacturerData> {
-    return this.http.get<ManufacturerData>(`${this.apiUrl}/search?nit=${nit}`, this.getAuthHeader());
+    return this.http.get<ManufacturerData>(`${this.apiUrl}search?nit=${nit}`, this.getAuthHeader());
   }
 
   deleteManufacturer(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`, this.getAuthHeader());
+    return this.http.delete<any>(`${this.apiUrl}${id}`, this.getAuthHeader());
   }
 }
