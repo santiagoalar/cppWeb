@@ -5,7 +5,7 @@
       {{ 'manufacturers.title' | translate }}
     </h1>
     <div class="action-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding-top: 8px; margin-bottom: 8px;">
-      <button *ngIf="isDirectivo()" mat-raised-button color="accent" (click)="openCreateModal()" style="margin: 0;">
+      <button *ngIf="isDirectivo()" id="create-manufacturer-button" mat-raised-button color="accent" (click)="openCreateModal()" style="margin: 0;">
         <mat-icon>add</mat-icon>
         {{ 'manufacturers.createButton' | translate }}
       </button>
@@ -13,9 +13,9 @@
         <div style="display: flex; align-items: center; gap: 8px;">
           <mat-form-field appearance="fill" color="accent">
             <mat-label>{{ 'manufacturers.searchById' | translate }}</mat-label>
-            <input matInput [(ngModel)]="searchId" placeholder="ID" />
+            <input id="manufacturer-search-id-input" matInput [(ngModel)]="searchId" placeholder="ID" />
           </mat-form-field>
-          <button mat-raised-button color="accent" (click)="searchById()">
+          <button id="manufacturer-search-id-button" mat-raised-button color="accent" (click)="searchById()">
             <mat-icon>search</mat-icon>
             {{ 'manufacturers.search' | translate }}
           </button>
@@ -23,9 +23,9 @@
         <div style="display: flex; align-items: center; gap: 8px;">
           <mat-form-field appearance="fill" color="accent">
             <mat-label>{{ 'manufacturers.searchByNit' | translate }}</mat-label>
-            <input matInput [(ngModel)]="searchNit" placeholder="NIT" />
+            <input id="manufacturer-search-nit-input" matInput [(ngModel)]="searchNit" placeholder="NIT" />
           </mat-form-field>
-          <button mat-raised-button color="accent" (click)="searchByNit()">
+          <button id="manufacturer-search-nit-button" mat-raised-button color="accent" (click)="searchByNit()">
             <mat-icon>search</mat-icon>
             {{ 'manufacturers.search' | translate }}
           </button>

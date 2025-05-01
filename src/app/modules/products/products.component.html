@@ -5,16 +5,16 @@
       {{ 'PRODUCTS.PAGE_TITLE' | translate }}
     </h1>
     <div class="action-bar" style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 8px 0;">
-      <button *ngIf="isDirectivo()" mat-raised-button color="accent" (click)="openCreateProductModal()" style="margin-right: auto;">
+      <button *ngIf="isDirectivo()" id="create-product-button" mat-raised-button color="accent" (click)="openCreateProductModal()" style="margin-right: auto;">
         <mat-icon>add</mat-icon>
         {{ 'PRODUCTS.BUTTON.CREATE' | translate }}
       </button>
       <div style="display: flex; align-items: center; gap: 8px;">
         <mat-form-field appearance="fill" color="accent">
           <mat-label>{{ 'PRODUCTS.SEARCH_BY_ID' | translate }}</mat-label>
-          <input matInput [(ngModel)]="searchId" placeholder="ID" />
+          <input id="product-search-input" matInput [(ngModel)]="searchId" placeholder="ID" />
         </mat-form-field>
-        <button mat-raised-button color="accent" (click)="searchById()">
+        <button id="product-search-button" mat-raised-button color="accent" (click)="searchById()">
           <mat-icon>search</mat-icon>
           {{ 'PRODUCTS.BUTTON.SEARCH' | translate }}
         </button>
@@ -24,29 +24,29 @@
     <mat-divider></mat-divider>
   </div>
 
-  <div class="cards-container" style="padding-top: 16px;">
-    <mat-card *ngFor="let product of products" class="product-card">
+  <div id="products-cards-container" class="cards-container" style="padding-top: 16px;">
+    <mat-card *ngFor="let product of products" class="product-card" [id]="'product-card-' + product.id">
       <div class="carousel">
-        <button mat-icon-button class="nav prev" (click)="prevImage(product.id)">
+        <button id="prev-image-{{product.id}}" mat-icon-button class="nav prev" (click)="prevImage(product.id)">
           <mat-icon>chevron_left</mat-icon>
         </button>
-        <img [src]="product.images[imageIndices[product.id]]" alt="{{ product.name }}" />
-        <button mat-icon-button class="nav next" (click)="nextImage(product.id)">
+        <img [id]="'product-image-' + product.id" [src]="product.images[imageIndices[product.id]]" alt="{{ product.name }}" />
+        <button id="next-image-{{product.id}}" mat-icon-button class="nav next" (click)="nextImage(product.id)">
           <mat-icon>chevron_right</mat-icon>
         </button>
       </div>
       <mat-card-content class="card-info">
-        <h3 class="product-name">{{ product.name }}</h3>
-        <p class="product-brand">{{ product.brand }}</p>
+        <h3 [id]="'product-name-' + product.id" class="product-name">{{ product.name }}</h3>
+        <p [id]="'product-brand-' + product.id" class="product-brand">{{ product.brand }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-icon-button (click)="openDetailsModal(product)">
+        <button [id]="'product-details-' + product.id" mat-icon-button (click)="openDetailsModal(product)">
           <mat-icon>info</mat-icon>
         </button>
-        <button *ngIf="isDirectivo()" mat-icon-button color="accent" (click)="openUpdateProductModal(product.id)">
+        <button *ngIf="isDirectivo()" [id]="'product-edit-' + product.id" mat-icon-button color="accent" (click)="openUpdateProductModal(product.id)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button *ngIf="isDirectivo()" mat-icon-button color="warn" (click)="deleteProduct(product.id)">
+        <button *ngIf="isDirectivo()" [id]="'product-delete-' + product.id" mat-icon-button color="warn" (click)="deleteProduct(product.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-card-actions>
