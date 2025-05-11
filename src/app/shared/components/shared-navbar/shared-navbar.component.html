@@ -1,29 +1,29 @@
-<mat-toolbar class="navbar" [@fadeIn]>
+<mat-toolbar id="shared-navbar" class="navbar" [@fadeIn]>
   <div class="navbar-inner">
-    <div class="app-title">
+    <div id="navbar-title" class="app-title">
       <img src="assets/minilogo.png" alt="Logo" class="logo" />
       CCP
     </div>
-    <div class="nav-links">
-      <a *ngIf="isDirectivo()" mat-button routerLink="/manufacturers">
+    <div id="navbar-links" class="nav-links">
+      <a id="nav-manufacturers" *ngIf="isDirectivo()" mat-button routerLink="/manufacturers">
         <mat-icon>domain</mat-icon>
         {{ 'navbar.manufacturers' | translate }}
       </a>
-      <a mat-button routerLink="/products">
+      <a id="nav-products" mat-button routerLink="/products">
         <mat-icon>inventory_2</mat-icon>
         {{ 'navbar.products' | translate }}
       </a>
     </div>
     <span class="spacer"></span>
     <div class="actions">
-      <button mat-button [matMenuTriggerFor]="languageMenu">
+      <button id="nav-language-button" mat-button [matMenuTriggerFor]="languageMenu">
         <mat-icon>language</mat-icon> {{ currentLang | uppercase }}
       </button>
       <mat-menu #languageMenu="matMenu" class="accent-menu">
-        <button mat-menu-item (click)="changeLanguage('en')">English</button>
-        <button mat-menu-item (click)="changeLanguage('es')">Español</button>
+        <button id="nav-language-english" mat-menu-item (click)="changeLanguage('en')">English</button>
+        <button id="nav-language-spanish" mat-menu-item (click)="changeLanguage('es')">Español</button>
       </mat-menu>
-      <button mat-icon-button [matMenuTriggerFor]="userMenu">
+      <button id="nav-user-button" mat-icon-button [matMenuTriggerFor]="userMenu">
         <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #userMenu="matMenu" class="user-info-menu accent-menu">
@@ -35,7 +35,7 @@
           <div class="user-email">{{ userData?.email }}</div>
           <div class="user-phone">{{ userData?.phone }}</div>
         </div>
-        <button mat-menu-item (click)="signOut()">{{ 'navbar.signOut' | translate }}</button>
+        <button id="nav-signout" mat-menu-item (click)="signOut()">{{ 'navbar.signOut' | translate }}</button>
       </mat-menu>
     </div>
   </div>
