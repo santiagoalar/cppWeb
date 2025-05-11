@@ -1,7 +1,7 @@
 <div class="header" style="display: flex; justify-content: flex-end; padding: 10px;">
   <app-language-switcher></app-language-switcher>
 </div>
-<div class="auth-container" [@fadeIn] style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+<div id="sign-in-form-container" class="auth-container" [@fadeIn] style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
   <div class="logo-row" style="flex: 0 0 auto; margin-right: 40px;">
     <img id="app-logo" src="assets/logo.png" alt="App Logo" style="width: 300px;" />
   </div>
@@ -31,7 +31,7 @@
         </form>
       </mat-card-content>
       <mat-card-actions style="display: flex; justify-content: center;">
-        <button mat-button color="accent" routerLink="/sign-up">
+        <button id="go-to-sign-up" mat-button color="accent" routerLink="/sign-up">
           {{ 'auth.signIn.noAccount' | translate }}
         </button>
       </mat-card-actions>
