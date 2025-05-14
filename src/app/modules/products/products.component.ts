@@ -8,6 +8,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import { BulkUploadModalComponent } from './bulk-upload-modal/bulk-upload-modal.component';
 
 @Component({
   selector: 'app-products',
@@ -129,6 +130,20 @@ export class ProductsComponent implements OnInit {
       }
     });
   }
+
+  openBulkUploadModal(): void {
+  const dialogRef = this.dialog.open(BulkUploadModalComponent, {
+    width: '550px',
+    disableClose: true,
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result === true) {
+      // Refresh products list after successful upload
+      this.loadProducts();
+    }
+  });
+}
 
   isDirectivo(): boolean {
     return this.auth.isUserDirectivo();

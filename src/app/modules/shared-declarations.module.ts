@@ -18,6 +18,11 @@ import { ProductsComponent } from './products/products.component';
 import { ProductFormModalComponent } from './products/product-form-modal/product-form-modal.component';
 import {  MatCardModule } from '@angular/material/card';
 import { ProductDetailsModalComponent } from './products/product-details-modal/product-details-modal.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailsModalComponent } from './orders/order-details-modal/order-details-modal.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BulkUploadModalComponent } from './products/bulk-upload-modal/bulk-upload-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,10 @@ import { ProductDetailsModalComponent } from './products/product-details-modal/p
     ManufacturersModalComponent,
     ProductsComponent,
     ProductFormModalComponent,
-    ProductDetailsModalComponent
+    ProductDetailsModalComponent,
+    OrdersComponent,
+    OrderDetailsModalComponent,
+    BulkUploadModalComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +50,9 @@ import { ProductDetailsModalComponent } from './products/product-details-modal/p
     MatSelectModule,
     MatIconModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     TranslateModule,
@@ -51,6 +61,9 @@ import { ProductDetailsModalComponent } from './products/product-details-modal/p
     ProductsComponent,
     ProductFormModalComponent,
     ProductDetailsModalComponent,
+    OrdersComponent,
+    OrderDetailsModalComponent,
+    BulkUploadModalComponent,
   ]
 })
 export class SharedDeclarationsModule { }

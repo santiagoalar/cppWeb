@@ -1,0 +1,128 @@
+@import '@angular/material/theming';
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$theme: mat-dark-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+
+
+.bulk-upload-content {
+  min-height: 300px;
+  max-width: 500px;
+}
+
+.dropzone-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.dropzone {
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &.hovering {
+    border-color: mat-color($accent);
+    background-color: rgba(255, 64, 129, 0.05);
+  }
+  
+  &.has-file {
+    border-color: mat-color($accent);
+    background-color: rgba(255, 64, 129, 0.1);
+  }
+  
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  
+  p {
+    margin: 0;
+  }
+}
+
+.dropzone-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.clear-button {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  
+  .mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+  }
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(244, 67, 54, 0.1);
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-top: 8px;
+  
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.upload-info {
+  margin-top: 16px;
+  
+  h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+}
+
+.loading-container, .success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  text-align: center;
+  gap: 16px;
+}
+
+.success-icon {
+  mat-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+  }
+}

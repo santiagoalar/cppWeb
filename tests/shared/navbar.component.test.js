@@ -48,8 +48,10 @@ describe('Shared Navbar', () => {
     // Check their labels
     const prodLabel = await page.$eval('#nav-products', el => el.textContent.trim());
     const manLabel = await page.$eval('#nav-manufacturers', el => el.textContent.trim());
+    const orderLabel = await page.$eval('#nav-orders', el => el.textContent.trim());
     expect(prodLabel).toContain('Products');
     expect(manLabel).toContain('Manufacturers');
+    expect(orderLabel).toContain('Orders');
   }, 30000);
 
   test('should navigate to Products tab on click', async () => {

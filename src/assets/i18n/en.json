@@ -130,14 +130,72 @@
     "PAGE_TITLE": "Products",
     "CREATED_AT": "Created At",
     "UPDATED_AT": "Updated At",
+    "SEARCH_BY_ID": "Search by ID",
     "BUTTON": {
       "CREATE": "Create Product",
       "SAVE": "Save",
       "UPDATE": "Update",
       "DELETE": "Delete",
       "SEARCH": "Search",
-      "CANCEL": "Close"
+      "CANCEL": "Close",
+      "BULK_UPLOAD": "Import CSV"
     },
-    "SEARCH_BY_ID": "Search by ID"
+    "BULK_UPLOAD": {
+      "TITLE": "Bulk Upload Products",
+      "DROP_HINT": "Drop a CSV file here or click to select",
+      "UPLOAD": "Upload",
+      "UPLOADING": "Uploading products...",
+      "SUCCESS": "Products uploaded successfully",
+      "SUCCESS_TITLE": "Upload Complete!",
+      "SUCCESS_MESSAGE": "Your products have been uploaded successfully and are being processed.",
+      "FILE_REQUIREMENTS": "File Requirements",
+      "CSV_FORMAT": "File must be in CSV format",
+      "MAX_SIZE": "Maximum file size: 5MB",
+      "TEMPLATE_FORMAT": "Follow the required column format",
+      "DOWNLOAD_TEMPLATE": "Download Template",
+      "ERROR": {
+        "FILE_TYPE": "Only CSV files are allowed",
+        "FILE_SIZE": "File size exceeds 5MB limit",
+        "NO_FILE": "Please select a file first",
+        "UPLOAD_FAILED": "Failed to upload file. Please try again."
+      }
+    }
+  },
+  "orders": {
+    "title": "Orders",
+    "searchByClient": "Search by Client",
+    "search": "Search",
+    "id": "Order ID",
+    "date": "Order Date",
+    "status": "Status",
+    "client": "Client",
+    "total": "Total",
+    "actions": "Actions",
+    "noOrders": "No orders found",
+    "orderDetails": "Order Details",
+    "totalItems": "Total Items",
+    "items": "Order Items",
+    "product": "Product",
+    "quantity": "Quantity",
+    "price": "Unit Price",
+    "subtotal": "Subtotal",
+    "viewDetails": "View Details",
+    "transactionStatus": "Transaction Status",
+    "generalInfo": "General Information",
+    "history": "Order History",
+    "description": "Description",
+    "transactionId": "Transaction ID",
+    "transactionDate": "Transaction Date",
+    "paymentId": "Payment ID",
+    "taxes": "Taxes",
+    "statusTypes": {
+      "PENDING": "Pending",
+      "PROCESSING": "Processing",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled",
+      "SHIPPED": "Shipped",
+      "DELIVERED": "Delivered",
+      "REFUNDED": "Refunded"
+    }
   }
 }
