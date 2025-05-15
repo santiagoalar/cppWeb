@@ -13,6 +13,10 @@
         <mat-icon>inventory_2</mat-icon>
         {{ 'navbar.products' | translate }}
       </a>
+      <a id="nav-orders" *ngIf="isDirectivo()" mat-button routerLink="/orders">
+        <mat-icon>shopping_cart</mat-icon>
+        {{ 'navbar.orders' | translate }}
+      </a>
     </div>
     <span class="spacer"></span>
     <div class="actions">

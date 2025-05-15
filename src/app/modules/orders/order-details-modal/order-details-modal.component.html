@@ -1,0 +1,147 @@
+<h2 mat-dialog-title style="display: flex; align-items: center; gap: 8px; padding-top: 12px;" id="order-details-title">
+  <mat-icon>receipt_long</mat-icon>
+  {{ 'orders.orderDetails' | translate }} #{{order.id | slice:0:8}}...
+</h2>
+<mat-divider></mat-divider>
+<div class="order-details-container" [@fadeIn] style="padding-top: 10px;" id="order-details-container">
+  <mat-dialog-content class="order-details-content" id="order-details-content">
+    <!-- General Order Information -->
+    <mat-card id="general-info-card">
+      <mat-card-header style="padding-bottom: 12px;" id="general-info-header">
+        <mat-card-title>{{ 'orders.generalInfo' | translate }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content id="general-info-content">
+        <div class="two-column-grid" id="order-info-grid">
+          <mat-form-field appearance="fill" color="accent" class="full-width" id="client-field">
+            <mat-label>{{ 'orders.client' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="order.client_name || order.clientId" id="client-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" class="full-width" id="date-field">
+            <mat-label>{{ 'orders.date' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="order.date | date:'medium'" id="date-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" class="full-width" id="status-field">
+            <mat-label>{{ 'orders.status' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="order.status" id="status-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" class="full-width" id="total-items-field">
+            <mat-label>{{ 'orders.totalItems' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="getTotalItems()" id="total-items-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" class="full-width" id="transaction-id-field">
+            <mat-label>{{ 'orders.transactionId' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="order.transactionId" id="transaction-id-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" class="full-width" id="transaction-status-field">
+            <mat-label>{{ 'orders.transactionStatus' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="order.transactionStatus" id="transaction-status-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" class="full-width" id="transaction-date-field">
+            <mat-label>{{ 'orders.transactionDate' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="order.transactionDate | date:'medium'" id="transaction-date-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" class="full-width" id="payment-id-field">
+            <mat-label>{{ 'orders.paymentId' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="order.paymentId" id="payment-id-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" class="full-width" id="subtotal-field">
+            <mat-label>{{ 'orders.subtotal' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="order.subtotal | currency:order.currency" id="subtotal-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" class="full-width" id="taxes-field">
+            <mat-label>{{ 'orders.taxes' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="order.taxes | currency:order.currency" id="taxes-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" class="full-width span-2" id="total-field">
+            <mat-label>{{ 'orders.total' | translate }}</mat-label>
+            <input matInput [readonly]="true" [value]="order.total | currency:order.currency" id="total-input" />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Order History Section -->
+    <mat-card *ngIf="order.orderHistory && order.orderHistory.length > 0" style="margin-top: 20px;" id="history-card">
+      <mat-card-header style="padding-bottom: 12px;" id="history-header">
+        <mat-card-title>{{ 'orders.history' | translate }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content id="history-content">
+        <table mat-table [dataSource]="historyDataSource" class="history-table mat-elevation-z2" style="width: 100%;" id="history-table">
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef class="accent-header" id="history-date-header">{{ 'orders.date' | translate }}</th>
+            <td mat-cell *matCellDef="let history; let i = index" id="history-date-{{i}}">{{history.date | date:'medium'}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef class="accent-header" id="history-status-header">{{ 'orders.status' | translate }}</th>
+            <td mat-cell *matCellDef="let history; let i = index" id="history-status-{{i}}">{{history.status}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef class="accent-header" id="history-description-header">{{ 'orders.description' | translate }}</th>
+            <td mat-cell *matCellDef="let history; let i = index" id="history-description-{{i}}">{{history.description}}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="historyColumns" class="accent-header-row" id="history-header-row"></tr>
+          <tr mat-row *matRowDef="let row; columns: historyColumns; let i = index" id="history-row-{{i}}"></tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+    
+    <!-- Order Items Section -->
+    <mat-card style="margin-top: 20px;" id="order-items-card">
+      <mat-card-header class="accent-header-card" id="order-items-header">
+        <mat-card-title>{{ 'orders.items' | translate }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content id="order-items-content">
+        <div *ngIf="loading" style="display: flex; justify-content: center; padding: 20px;" id="order-items-loading">
+          <mat-spinner diameter="40"></mat-spinner>
+        </div>
+
+        <div class="order-items-grid" id="order-items-grid">
+          <mat-card *ngFor="let item of enhancedItems; let i = index" class="product-card" id="product-card-{{i}}">
+            <img mat-card-image [src]="item.imageUrl || 'assets/images/product-placeholder.jpg'"
+              alt="{{item.productName}}" class="product-image" id="product-image-{{i}}">
+            <mat-card-header style="padding: 8px;" id="product-header-{{i}}">
+              <mat-card-title class="compact-title" id="product-title-{{i}}">{{item.productName}}</mat-card-title>
+              <mat-card-subtitle class="compact-subtitle" id="product-brand-{{i}}">{{item.brand || 'Brand N/A'}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="compact-content" id="product-details-{{i}}">
+              <div class="product-details">
+                <div class="detail-row" id="product-quantity-row-{{i}}">
+                  <span class="detail-label">{{ 'orders.quantity' | translate }}:</span>
+                  <span class="detail-value" id="product-quantity-{{i}}">{{item.quantity}}</span>
+                </div>
+                <div class="detail-row" id="product-price-row-{{i}}">
+                  <span class="detail-label">{{ 'orders.price' | translate }}:</span>
+                  <span class="detail-value" id="product-price-{{i}}">{{item.unitPrice | currency:item.currency}}</span>
+                </div>
+                <div class="detail-row" id="product-subtotal-row-{{i}}">
+                  <span class="detail-label">{{ 'orders.subtotal' | translate }}:</span>
+                  <span class="detail-value" id="product-subtotal-{{i}}">{{item.totalPrice | currency:item.currency}}</span>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end" id="order-details-actions">
+    <button id="close-order-details-button" mat-button (click)="close()">
+      <mat-icon>close</mat-icon>
+      {{ 'common.close' | translate }}
+    </button>
+  </mat-dialog-actions>
+</div>
