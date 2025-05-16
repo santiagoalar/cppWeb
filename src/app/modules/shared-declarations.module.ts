@@ -23,6 +23,12 @@ import { OrderDetailsModalComponent } from './orders/order-details-modal/order-d
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BulkUploadModalComponent } from './products/bulk-upload-modal/bulk-upload-modal.component';
+import { RoutesComponent } from './routes/routes.component';
+import { SellingPlansComponent } from './selling-plans/selling-plans.component';
+import { RoutesDetailsModalComponent } from './routes/routes-details-modal/routes-details-modal.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -33,7 +39,10 @@ import { BulkUploadModalComponent } from './products/bulk-upload-modal/bulk-uplo
     ProductDetailsModalComponent,
     OrdersComponent,
     OrderDetailsModalComponent,
-    BulkUploadModalComponent
+    BulkUploadModalComponent,
+    RoutesComponent,
+    SellingPlansComponent,
+    RoutesDetailsModalComponent
   ],
   imports: [
     CommonModule,
@@ -53,6 +62,9 @@ import { BulkUploadModalComponent } from './products/bulk-upload-modal/bulk-uplo
     MatCardModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     TranslateModule,
@@ -64,6 +76,8 @@ import { BulkUploadModalComponent } from './products/bulk-upload-modal/bulk-uplo
     OrdersComponent,
     OrderDetailsModalComponent,
     BulkUploadModalComponent,
+    RoutesComponent,
+    SellingPlansComponent,
   ]
 })
 export class SharedDeclarationsModule { }

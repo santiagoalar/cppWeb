@@ -27,7 +27,9 @@
   },
   "common": {
     "language": "Language",
-    "close": "Close"
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel"
   },
   "mainPage": {
     "title": "Welcome to Our Website!",
@@ -56,7 +58,9 @@
     "manufacturers": "Manufacturers",
     "orders": "Orders",
     "products": "Products",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "routes": "Routes",
+    "selling-plans": "Selling Plans"
   },
   "manufacturers": {
     "title": "Manufacturers",
@@ -196,6 +200,74 @@
       "SHIPPED": "Shipped",
       "DELIVERED": "Delivered",
       "REFUNDED": "Refunded"
+    }
+  },
+  "routes": {
+    "title": "Routes",
+    "createRoute": "Create Route",
+    "routeDetails": "Route Details",
+    "editRoute": "Edit Route",
+    "name": "Name",
+    "nameRequired": "Route name is required",
+    "zone": "Zone",
+    "zoneRequired": "Zone is required",
+    "description": "Description",
+    "dueDate": "Due Date",
+    "waypoints": "Waypoints",
+    "waypointName": "Location Name",
+    "address": "Address",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "addWaypoint": "Add Location",
+    "removeWaypoint": "Remove",
+    "waypoint": "Location",
+    "noRoutesFound": "No routes found",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteRouteTitle": "Delete Route",
+    "deleteRouteConfirm": "Are you sure you want to delete the route '{name}'?",
+    "routeCreatedSuccess": "Route created successfully",
+    "routeUpdatedSuccess": "Route updated successfully",
+    "routeDeletedSuccess": "Route deleted successfully",
+    "errorLoadingRoutes": "Error loading routes",
+    "errorCreatingRoute": "Error creating route",
+    "errorUpdatingRoute": "Error updating route",
+    "errorDeletingRoute": "Error deleting route"
+  },
+  "sellingPlans": {
+    "title": "Selling Plans",
+    "createPlan": "Create Plan",
+    "planDetails": "Plan Details",
+    "editPlan": "Edit Plan",
+    "title_field": "Title",
+    "titleRequired": "Plan title is required",
+    "description": "Description",
+    "targetAmount": "Target Amount",
+    "targetAmountRequired": "Target amount is required",
+    "targetDate": "Target Date",
+    "targetDateRequired": "Target date is required",
+    "status": "Status",
+    "progress": "Progress",
+    "createdAt": "Created At",
+    "noPlanFound": "No selling plans found",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deletePlanTitle": "Delete Selling Plan",
+    "deletePlanConfirm": "Are you sure you want to delete the selling plan '{title}'?",
+    "planCreatedSuccess": "Selling plan created successfully",
+    "planUpdatedSuccess": "Selling plan updated successfully",
+    "planDeletedSuccess": "Selling plan deleted successfully",
+    "errorLoadingPlans": "Error loading selling plans",
+    "errorCreatingPlan": "Error creating selling plan",
+    "errorUpdatingPlan": "Error updating selling plan",
+    "errorDeletingPlan": "Error deleting selling plan",
+    "statuses": {
+      "pending": "Pending",
+      "in_progress": "In Progress",
+      "completed": "Completed",
+      "failed": "Failed"
     }
   }
 }

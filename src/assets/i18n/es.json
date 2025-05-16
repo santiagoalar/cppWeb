@@ -52,7 +52,9 @@
     "manufacturers": "Fabricantes",
     "orders": "Órdenes",
     "products": "Productos",
-    "signOut": "Cerrar sesión"
+    "signOut": "Cerrar sesión",
+    "routes": "Rutas",
+    "selling-plans": "Planes de Venta"
   },
   "manufacturers": {
     "title": "Fabricantes",
@@ -93,7 +95,10 @@
     "update": "Actualizar"
   },
   "common": {
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "save": "Guardar",
+    "update": "Actualizar",
+    "cancel": "Cancelar"
   },
   "PRODUCT_FORM": {
     "TITLE": "Crear Producto",
@@ -195,6 +200,74 @@
       "SHIPPED": "Enviado",
       "DELIVERED": "Entregado",
       "REFUNDED": "Reembolsado"
+    }
+  },
+  "routes": {
+    "title": "Rutas",
+    "createRoute": "Crear Ruta",
+    "routeDetails": "Detalles de la Ruta",
+    "editRoute": "Editar Ruta",
+    "name": "Nombre",
+    "nameRequired": "El nombre de la ruta es requerido",
+    "zone": "Zona",
+    "zoneRequired": "La zona es requerida",
+    "description": "Descripción",
+    "dueDate": "Fecha Límite",
+    "waypoints": "Puntos de Ruta",
+    "waypointName": "Nombre de Ubicación",
+    "address": "Dirección",
+    "latitude": "Latitud",
+    "longitude": "Longitud",
+    "addWaypoint": "Añadir Ubicación",
+    "removeWaypoint": "Eliminar",
+    "waypoint": "Ubicación",
+    "noRoutesFound": "No se encontraron rutas",
+    "view": "Ver",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "deleteRouteTitle": "Eliminar Ruta",
+    "deleteRouteConfirm": "¿Está seguro que desea eliminar la ruta '{name}'?",
+    "routeCreatedSuccess": "Ruta creada exitosamente",
+    "routeUpdatedSuccess": "Ruta actualizada exitosamente",
+    "routeDeletedSuccess": "Ruta eliminada exitosamente",
+    "errorLoadingRoutes": "Error al cargar rutas",
+    "errorCreatingRoute": "Error al crear ruta",
+    "errorUpdatingRoute": "Error al actualizar ruta",
+    "errorDeletingRoute": "Error al eliminar ruta"
+  },
+  "sellingPlans": {
+    "title": "Planes de Venta",
+    "createPlan": "Crear Plan",
+    "planDetails": "Detalles del Plan",
+    "editPlan": "Editar Plan",
+    "title_field": "Título",
+    "titleRequired": "El título del plan es requerido",
+    "description": "Descripción",
+    "targetAmount": "Monto Objetivo",
+    "targetAmountRequired": "El monto objetivo es requerido",
+    "targetDate": "Fecha Objetivo",
+    "targetDateRequired": "La fecha objetivo es requerida",
+    "status": "Estado",
+    "progress": "Progreso",
+    "createdAt": "Creado el",
+    "noPlanFound": "No se encontraron planes de venta",
+    "view": "Ver",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "deletePlanTitle": "Eliminar Plan de Venta",
+    "deletePlanConfirm": "¿Está seguro que desea eliminar el plan de venta '{title}'?",
+    "planCreatedSuccess": "Plan de venta creado exitosamente",
+    "planUpdatedSuccess": "Plan de venta actualizado exitosamente",
+    "planDeletedSuccess": "Plan de venta eliminado exitosamente",
+    "errorLoadingPlans": "Error al cargar planes de venta",
+    "errorCreatingPlan": "Error al crear plan de venta",
+    "errorUpdatingPlan": "Error al actualizar plan de venta",
+    "errorDeletingPlan": "Error al eliminar plan de venta",
+    "statuses": {
+      "pending": "Pendiente",
+      "in_progress": "En Progreso",
+      "completed": "Completado",
+      "failed": "Fallido"
     }
   }
 }
