@@ -1,0 +1,68 @@
+<div class="main-page-container content-wrapper dark-theme" [@fadeIn] id="orders-page-container">
+  <div class="orders-container" id="orders-main-container">
+    <h1 class="page-title" style="display: flex; align-items: center; gap: 8px; padding-top: 16px;" id="orders-title">
+      <mat-icon>shopping_cart</mat-icon>
+      {{ 'orders.title' | translate }}
+    </h1>
+    <mat-divider id="orders-divider"></mat-divider>
+
+    <div *ngIf="loading" class="loading-container" id="orders-loading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+    
+    <div *ngIf="!loading && (!orders.data || orders.data.length === 0)" class="no-data-container" id="orders-no-data">
+      <mat-icon>error_outline</mat-icon>
+      <p>{{ 'orders.noOrders' | translate }}</p>
+    </div>
+    
+    <div *ngIf="!loading && orders.data && orders.data.length > 0" id="orders-table-container">
+      <table mat-table [dataSource]="orders" class="mat-elevation-z8 orders-table" id="orders-table">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="accent-header" id="orders-id-header">{{ 'orders.id' | translate }}</th>
+          <td mat-cell *matCellDef="let order; let i = index" class="truncate-cell" [matTooltip]="order.id" id="order-id-{{i}}">
+            {{ order.id | slice:0:8 }}...
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef class="accent-header" id="orders-date-header">{{ 'orders.date' | translate }}</th>
+          <td mat-cell *matCellDef="let order; let i = index" id="order-date-{{i}}">{{ order.date | date:'medium' }}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="accent-header" id="orders-status-header">{{ 'orders.status' | translate }}</th>
+          <td mat-cell *matCellDef="let order; let i = index" id="order-status-{{i}}">{{ order.status }}</td>
+        </ng-container>
+        <ng-container matColumnDef="transactionStatus">
+          <th mat-header-cell *matHeaderCellDef class="accent-header" id="orders-transaction-status-header">{{ 'orders.transactionStatus' | translate }}</th>
+          <td mat-cell *matCellDef="let order; let i = index" id="order-transaction-status-{{i}}">{{ order.transactionStatus }}</td>
+        </ng-container>
+        <ng-container matColumnDef="clientId">
+          <th mat-header-cell *matHeaderCellDef class="accent-header" id="orders-client-header">{{ 'orders.client' | translate }}</th>
+          <td mat-cell *matCellDef="let order; let i = index" class="truncate-cell" [matTooltip]="order.client_name || order.clientId" id="order-client-{{i}}">
+            {{ order.client_name || (order.clientId | slice:0:8) + '...' }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef class="accent-header" id="orders-total-header">{{ 'orders.total' | translate }}</th>
+          <td mat-cell *matCellDef="let order; let i = index" id="order-total-{{i}}">{{ order.total | currency:order.currency }}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="accent-header" id="orders-actions-header">{{ 'orders.actions' | translate }}</th>
+          <td mat-cell *matCellDef="let order; let i = index" id="order-actions-{{i}}">
+            <button id="view-order-{{order.id}}" mat-icon-button color="accent" (click)="viewOrderDetails(order.id)" 
+                   matTooltip="{{ 'orders.viewDetails' | translate }}">
+              <mat-icon>search</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" class="accent-header-row" id="orders-header-row"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index" id="order-row-{{i}}"></tr>
+      </table>
+    </div>
+    <ng-template #noData>
+      <div class="no-data-placeholder" id="orders-no-data">
+        {{ 'orders.noOrders' | translate }}
+      </div>
+    </ng-template>
+  </div>
+</div>

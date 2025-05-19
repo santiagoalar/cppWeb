@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class ProductsService {
   private apiUrl = `${environment.apiBaseUrl}/bff/v1/web/products/`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private getAuthHeader(): { headers: HttpHeaders } {
     const token = localStorage.getItem('token') || '';
@@ -39,5 +39,14 @@ export class ProductsService {
 
   deleteProduct(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}${id}`, this.getAuthHeader());
+  }
+
+  uploadProductsBulk(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+
+    return this.http.post<any>(
+      `${this.apiUrl}bulk`, formData, this.getAuthHeader()
+    );
   }
 }

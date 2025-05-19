@@ -3,7 +3,7 @@
 </div>
 <div class="auth-container" [@fadeIn] style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
   <div class="logo-row" style="flex: 0 0 auto; margin-right: 40px;">
-    <img src="assets/logo.png" alt="App Logo" style="width: 300px;" />
+    <img id="sign-up-logo" src="assets/logo.png" alt="App Logo" style="width: 300px;" />
   </div>
   <div class="card-row" style="flex: 0 0 auto; width: 100%; max-width: 500px;">
     <mat-card class="auth-card">
@@ -11,21 +11,21 @@
         <mat-card-title class="auth-title" style="margin-bottom: 20px;">{{ 'auth.signUp.title' | translate }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <div *ngIf="errorMessage" class="mat-elevation-z4" style="background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 4px; margin-bottom: 16px;">
+        <div *ngIf="errorMessage" id="sign-up-error" class="mat-elevation-z4" style="background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 4px; margin-bottom: 16px;">
           {{ errorMessage }}
         </div>
         <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
           <mat-form-field appearance="fill" color="accent" class="full-width">
             <mat-label>{{ 'auth.signUp.username' | translate }}</mat-label>
-            <input matInput formControlName="username" required>
+            <input id="sign-up-username" matInput formControlName="username" required>
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent" class="full-width">
             <mat-label>{{ 'auth.signUp.phone' | translate }}</mat-label>
-            <input matInput formControlName="phone" type="tel" required>
+            <input id="sign-up-phone" matInput formControlName="phone" type="tel" required>
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent" class="full-width">
             <mat-label>{{ 'auth.signUp.role' | translate }}</mat-label>
-            <mat-select formControlName="role" required>
+            <mat-select id="sign-up-role" formControlName="role" required>
               <mat-option value="CLIENTE">{{ 'auth.roles.customer' | translate }}</mat-option>
               <mat-option value="VENDEDOR">{{ 'auth.roles.salesman' | translate }}</mat-option>
               <mat-option value="DIRECTIVO">{{ 'auth.roles.director' | translate }}</mat-option>
@@ -34,21 +34,21 @@
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent" class="full-width">
             <mat-label>{{ 'auth.signUp.email' | translate }}</mat-label>
-            <input matInput formControlName="email" type="email" required>
+            <input id="sign-up-email" matInput formControlName="email" type="email" required>
           </mat-form-field>
           <mat-form-field appearance="fill" color="accent" class="full-width">
             <mat-label>{{ 'auth.signUp.password' | translate }}</mat-label>
-            <input matInput formControlName="password" type="password" required>
+            <input id="sign-up-password" matInput formControlName="password" type="password" required>
           </mat-form-field>
           <div style="text-align: right;">
-            <button mat-raised-button color="accent" type="submit" [disabled]="!signUpForm.valid" style="font-size: 18px; padding: 12px 24px;">
+            <button id="sign-up-submit" mat-raised-button color="accent" type="submit" [disabled]="!signUpForm.valid" style="font-size: 18px; padding: 12px 24px;">
               {{ 'auth.signUp.submitButton' | translate }}
             </button>
           </div>
         </form>
       </mat-card-content>
       <mat-card-actions style="display: flex; justify-content: center;">
-        <button mat-button color="accent" routerLink="/sign-in">
+        <button id="sign-up-to-sign-in" mat-button color="accent" routerLink="/sign-in">
           {{ 'auth.signUp.haveAccount' | translate }}
         </button>
       </mat-card-actions>

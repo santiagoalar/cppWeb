@@ -1,10 +1,10 @@
-<div class="language-switcher">
-  <button mat-button [matMenuTriggerFor]="languageMenu">
+<div id="language-switcher" class="language-switcher">
+  <button id="language-button" mat-button [matMenuTriggerFor]="languageMenu">
     {{ languageService.getCurrentLang() | uppercase }}
     <mat-icon>arrow_drop_down</mat-icon>
   </button>
   <mat-menu #languageMenu="matMenu">
-    <button mat-menu-item (click)="changeLanguage('en')">English</button>
-    <button mat-menu-item (click)="changeLanguage('es')">Español</button>
+    <button id="language-english" mat-menu-item (click)="changeLanguage('en')">English</button>
+    <button id="language-spanish" mat-menu-item (click)="changeLanguage('es')">Español</button>
   </mat-menu>
 </div>

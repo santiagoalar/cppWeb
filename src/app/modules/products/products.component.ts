@@ -8,6 +8,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import { BulkUploadModalComponent } from './bulk-upload-modal/bulk-upload-modal.component';
 
 @Component({
   selector: 'app-products',
@@ -26,6 +27,7 @@ export class ProductsComponent implements OnInit {
   products: ProductData[] = [];
   imageIndices: Record<string, number> = {};
   searchId: string = '';
+  loading: boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -40,13 +42,19 @@ export class ProductsComponent implements OnInit {
   }
 
   loadProducts() {
+    this.loading = true;
     this.productsService.getAllProducts().subscribe({
       next: products => {
         this.products = products;
         this.imageIndices = {};
         this.products.forEach(p => this.imageIndices[p.id] = 0);
+        this.loading = false;
       },
-      error: err => console.error('Error loading products', err)
+      error: err => {
+        console.error('Error loading products', err);
+        this.loading = false;
+        this.showSnackBar('PRODUCTS.ERROR.LOADING');
+      }
     });
   }
 
@@ -64,9 +72,17 @@ export class ProductsComponent implements OnInit {
   }
 
   deleteProduct(id: string) {
+    this.loading = true;
     this.productsService.deleteProduct(id).subscribe({
-      next: () => this.loadProducts(),
-      error: err => console.error('Error deleting product', err)
+      next: () => {
+        this.loadProducts(); // This will reset loading state after fetching
+        this.showSnackBar('PRODUCTS.SUCCESS.DELETED');
+      },
+      error: err => {
+        console.error('Error deleting product', err);
+        this.loading = false;
+        this.showSnackBar('PRODUCTS.ERROR.DELETE');
+      }
     });
   }
 
@@ -86,6 +102,7 @@ export class ProductsComponent implements OnInit {
     const product = this.products.find(p => p.id === productId);
     if (!product) {
       console.error(`Product with id ${productId} not found`);
+      this.showSnackBar('PRODUCTS.ERROR.NOT_FOUND');
       return;
     }
     const dialogRef = this.dialog.open(ProductFormModalComponent, {
@@ -104,14 +121,15 @@ export class ProductsComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
     this.productsService.getProductById(this.searchId).subscribe({
       next: product => {
+        this.loading = false;
         this.openDetailsModal(product);
       },
       error: err => {
-        this.translate.get('ALERTS.PRODUCT_NOT_FOUND').subscribe(message => {
-          this.snackBar.open(message, 'OK', { duration: 3000 });
-        });
+        this.loading = false;
+        this.showSnackBar('PRODUCTS.ERROR.NOT_FOUND');
         console.error('Error fetching product', err);
       }
     });
@@ -130,7 +148,28 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  openBulkUploadModal(): void {
+    const dialogRef = this.dialog.open(BulkUploadModalComponent, {
+      width: '550px',
+      disableClose: true,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.loadProducts();
+      }
+    });
+  }
+
   isDirectivo(): boolean {
     return this.auth.isUserDirectivo();
+  }
+
+  private showSnackBar(messageKey: string): void {
+    this.translate.get(messageKey).subscribe(message => {
+      this.snackBar.open(message, this.translate.instant('COMMON.CLOSE'), {
+        duration: 3000
+      });
+    });
   }
 }

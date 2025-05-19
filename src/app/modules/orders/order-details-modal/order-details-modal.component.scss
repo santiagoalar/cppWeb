@@ -1,0 +1,121 @@
+@import '@angular/material/theming';
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$theme: mat-dark-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+
+.order-details-content {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.order-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+  height: 100%;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.product-image {
+  height: 160px;
+  object-fit: cover;
+}
+
+.product-details {
+  padding: 8px 0;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.detail-value {
+  font-weight: normal;
+}
+
+.product-description {
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+}
+
+.history-table {
+  width: 100%;
+}
+
+.history-table {
+  width: 100%;
+  
+  .accent-header-row {
+    background-color: mat-color($accent);
+  }
+  
+  .accent-header {
+    font-weight: 500;
+    font-size: 14px;
+    background-color: mat-color($accent);
+  }
+  
+  .mat-row:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .mat-row:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.compact-title {
+  font-size: 16px !important;
+  margin-bottom: 4px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.compact-subtitle {
+  font-size: 12px !important;
+  margin-bottom: 0 !important;
+}
+
+.compact-content {
+  padding: 8px !important;
+}

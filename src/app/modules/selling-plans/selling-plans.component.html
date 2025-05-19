@@ -1,0 +1,182 @@
+<div class="main-page-container content-wrapper dark-theme" [@fadeIn] id="selling-plans-page-container">
+  <div class="selling-plans-container" id="selling-plans-main-container">
+    <div class="page-header" id="selling-plans-header">
+      <h1 class="page-title" style="display: flex; align-items: center; gap: 8px; margin: 0;" id="selling-plans-title">
+        <mat-icon>assessment</mat-icon>
+        {{ 'sellingPlans.title' | translate }}
+      </h1>
+
+      <div class="actions-container" id="selling-plans-actions">
+        <button mat-raised-button color="primary" (click)="toggleCreateMode()" id="create-plan-button" *ngIf="!createMode && !editMode">
+          <mat-icon>add</mat-icon>
+          {{ 'sellingPlans.createPlan' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <mat-divider id="selling-plans-divider"></mat-divider>
+
+    <div *ngIf="loading" class="loading-container" id="selling-plans-loading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+
+    <div *ngIf="createMode || editMode" class="plan-form-container" [@fadeIn] id="plan-form-container">
+      <h2>{{ createMode ? ('sellingPlans.createPlan' | translate) : ('sellingPlans.editPlan' | translate) }}</h2>
+      
+      <form [formGroup]="planForm" class="plan-form" id="plan-form">
+        <div class="form-row">
+          <mat-form-field appearance="fill" color="accent" class="full-width">
+            <mat-label>{{ 'sellingPlans.title_field' | translate }}</mat-label>
+            <input matInput formControlName="title" required id="plan-title-input">
+            <mat-error *ngIf="planForm.get('title')?.hasError('required')">
+              {{ 'sellingPlans.titleRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-row">
+          <mat-form-field appearance="fill" color="accent" class="full-width">
+            <mat-label>{{ 'sellingPlans.description' | translate }}</mat-label>
+            <textarea matInput formControlName="description" rows="3" id="plan-description-input"></textarea>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-row two-col">
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>{{ 'sellingPlans.targetAmount' | translate }}</mat-label>
+            <input matInput type="number" formControlName="target_amount" required id="plan-target-amount-input">
+            <mat-error *ngIf="planForm.get('target_amount')?.hasError('required')">
+              {{ 'sellingPlans.targetAmountRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>{{ 'sellingPlans.targetDate' | translate }}</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="target_date" required id="plan-target-date-input">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="planForm.get('target_date')?.hasError('required')">
+              {{ 'sellingPlans.targetDateRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-row">
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>{{ 'sellingPlans.status' | translate }}</mat-label>
+            <mat-select formControlName="status" id="plan-status-input">
+              <mat-option *ngFor="let option of statusOptions" [value]="option.value">
+                {{ option.translation | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        
+        <div class="form-actions">
+          <button mat-button (click)="cancelEdit()" id="cancel-plan-button">
+            {{ 'common.cancel' | translate }}
+          </button>
+          <button mat-raised-button color="primary" [disabled]="planForm.invalid" (click)="savePlan()" id="save-plan-button">
+            <mat-icon>save</mat-icon>
+            {{ 'common.save' | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="!loading && plans.length === 0 && !createMode" class="no-data-container" id="selling-plans-no-data">
+      <mat-icon>error_outline</mat-icon>
+      <p>{{ 'sellingPlans.noPlanFound' | translate }}</p>
+      <button mat-raised-button color="primary" (click)="toggleCreateMode()" id="create-first-plan-button">
+        <mat-icon>add</mat-icon>
+        {{ 'sellingPlans.createPlan' | translate }}
+      </button>
+    </div>
+
+    <div *ngIf="!loading && plans.length > 0 && !createMode && !editMode" class="carousel-container" [@fadeIn] id="plans-carousel">
+      <div class="carousel-navigation">
+        <button mat-icon-button color="primary" (click)="prevPlan()" id="prev-plan-button">
+          <mat-icon>navigate_before</mat-icon>
+        </button>
+        
+        <div class="carousel-indicators">
+          <div *ngFor="let plan of plans; let i = index" 
+              class="carousel-indicator" 
+              [class.active]="i === currentPlanIndex"
+              (click)="goToPlan(i)">
+          </div>
+        </div>
+        
+        <button mat-icon-button color="primary" (click)="nextPlan()" id="next-plan-button">
+          <mat-icon>navigate_next</mat-icon>
+        </button>
+      </div>
+      
+      <!-- Current plan card -->
+      <div class="carousel-item" *ngIf="plans.length > 0" [@fadeIn] id="plan-card">
+        <mat-card class="plan-card">
+          <mat-card-header>
+            <div mat-card-avatar class="plan-avatar">
+              <mat-icon>assessment</mat-icon>
+            </div>
+            <mat-card-title>{{plans[currentPlanIndex].title | uppercase}}</mat-card-title>
+            <mat-card-subtitle>
+              <span class="status-badge" [ngClass]="getStatusClass(plans[currentPlanIndex].status || 'pending')">
+                {{ 'sellingPlans.statuses.' + (plans[currentPlanIndex].status || 'pending') | translate }}
+              </span>
+            </mat-card-subtitle>
+          </mat-card-header>
+          
+          <mat-card-content>
+            <div class="plan-description">
+              <p>{{plans[currentPlanIndex].description || '-'}}</p>
+            </div>
+            
+            <div class="plan-info-row">
+              <div class="plan-info-item">
+                <span class="info-label">{{ 'sellingPlans.targetAmount' | translate }}</span>
+                <span class="info-value">${{plans[currentPlanIndex].target_amount | number}}</span>
+              </div>
+              <div class="plan-info-item">
+                <span class="info-label">{{ 'sellingPlans.targetDate' | translate }}</span>
+                <span class="info-value">{{plans[currentPlanIndex].target_date | date}}</span>
+              </div>
+            </div>
+            
+            <div class="progress-container">
+              <span class="progress-label">
+                {{ 'sellingPlans.progress' | translate }}: {{calculateProgress(plans[currentPlanIndex])}}%
+              </span>
+              <mat-progress-bar mode="determinate" 
+                [value]="calculateProgress(plans[currentPlanIndex])" 
+                [color]="plans[currentPlanIndex].status === 'failed' ? 'warn' : 'accent'">
+              </mat-progress-bar>
+            </div>
+            
+            <div class="plan-info-row">
+              <div class="plan-info-item">
+                <span class="info-label">{{ 'sellingPlans.createdAt' | translate }}</span>
+                <span class="info-value">{{plans[currentPlanIndex].created_at | date}}</span>
+              </div>
+            </div>
+          </mat-card-content>
+          
+          <mat-card-actions align="end">
+            <button mat-button color="primary" (click)="toggleEditMode(plans[currentPlanIndex])" id="edit-plan-button">
+              <mat-icon>edit</mat-icon>
+              {{ 'sellingPlans.edit' | translate }}
+            </button>
+            <button mat-button color="warn" (click)="deletePlan(plans[currentPlanIndex])" id="delete-plan-button">
+              <mat-icon>delete</mat-icon>
+              {{ 'sellingPlans.delete' | translate }}
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      
+      <div class="plans-counter">
+        {{currentPlanIndex + 1}} / {{plans.length}}
+      </div>
+    </div>
+  </div>
+</div>

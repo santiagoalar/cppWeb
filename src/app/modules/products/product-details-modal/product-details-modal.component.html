@@ -1,11 +1,11 @@
 <mat-dialog-content class="details-modal" [@fadeIn]>
   <div class="left-column">
     <div class="carousel">
-      <button mat-icon-button class="nav prev" (click)="prevImage()">
+      <button id="modal-prev-image" mat-icon-button class="nav prev" (click)="prevImage()">
         <mat-icon>chevron_left</mat-icon>
       </button>
-      <img [src]="product.images[imageIndex]" alt="{{ product.name }}" />
-      <button mat-icon-button class="nav next" (click)="nextImage()">
+      <img id="modal-product-image" [src]="product.images[imageIndex]" alt="{{ product.name }}" />
+      <button id="modal-next-image" mat-icon-button class="nav next" (click)="nextImage()">
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
@@ -15,8 +15,8 @@
         <div style="display: flex; align-items: center; gap: 8px;">
           <mat-form-field appearance="fill" color="accent" style="flex: 1;">
             <mat-label>ID</mat-label>
-            <input matInput [value]="product.id" readonly>
-            <mat-icon matSuffix role="button" tabindex="0" class="copy-icon" (click)="copyToClipboard(product.id)">
+            <input id="modal-product-id" matInput [value]="product.id" readonly>
+            <mat-icon id="copy-product-id" matSuffix role="button" tabindex="0" class="copy-icon" (click)="copyToClipboard(product.id)">
               content_copy
             </mat-icon>
           </mat-form-field>
@@ -25,57 +25,57 @@
 
       <div *ngIf="product.created_at" class="field" style="display: flex; flex-direction: column; gap: 4px;">
         <strong class="label">{{ 'PRODUCTS.CREATED_AT' | translate }}</strong>
-        <span class="value">{{ product.created_at | date:'medium' }}</span>
+        <span id="modal-created-at" class="value">{{ product.created_at | date:'medium' }}</span>
       </div>
 
       <div *ngIf="product.updated_at" class="field" style="display: flex; flex-direction: column; gap: 4px;">
         <strong class="label">{{ 'PRODUCTS.UPDATED_AT' | translate }}</strong>
-        <span class="value">{{ product.updated_at | date:'medium' }}</span>
+        <span id="modal-updated-at" class="value">{{ product.updated_at | date:'medium' }}</span>
       </div>
     </div>
   </div>
 
-  <div class="info">
-    <h2 class="name" style="display: flex; align-items: center; gap: 8px;">
+  <div id="product-details-info" class="info">
+    <h2 id="product-details-name" class="name" style="display: flex; align-items: center; gap: 8px;">
       <mat-icon>inventory_2</mat-icon>
       {{ product.name }}
     </h2>
-    <h4 class="brand">{{ product.brand }}</h4>
+    <h4 id="product-details-brand" class="brand">{{ product.brand }}</h4>
 
-    <div class="field">
+    <div id="product-details-description" class="field">
       <span class="label">Description:</span>
-      <p class="value">{{ product.description }}</p>
+      <p id="modal-description" class="value">{{ product.description }}</p>
     </div>
 
-    <div class="field">
+    <div id="product-details-manufacturer" class="field">
       <span class="label">Manufacturer:</span>
-      <span class="value">{{ product.manufacturerId }}</span>
+      <span id="modal-manufacturer" class="value">{{ product.manufacturerId }}</span>
     </div>
 
-    <div class="field two-cols">
+    <div id="product-details-price-stock" class="field two-cols">
       <div>
         <span class="label">Price:</span>
-        <span class="value">{{ product.price }} {{ product.currency }}</span>
+        <span id="modal-price" class="value">{{ product.price }} {{ product.currency }}</span>
       </div>
       <div>
         <span class="label">Stock:</span>
-        <span class="value">{{ product.stock }}</span>
+        <span id="modal-stock" class="value">{{ product.stock }}</span>
       </div>
     </div>
 
-    <div class="field">
+    <div id="product-details-delivery" class="field">
       <span class="label">Delivery Time:</span>
-      <span class="value">{{ product.deliveryTime }} days</span>
+      <span id="modal-delivery-time" class="value">{{ product.deliveryTime }} days</span>
     </div>
 
-    <div class="field">
+    <div id="product-details-storage" class="field">
       <span class="label">Storage Conditions:</span>
-      <span class="value">{{ product.storageConditions }}</span>
+      <span id="modal-storage-conditions" class="value">{{ product.storageConditions }}</span>
     </div>
 
-    <div class="field details-list">
+    <div id="product-details-list" class="field details-list">
       <span class="label">Details:</span>
-      <ul>
+      <ul id="modal-details-list">
         <li *ngFor="let entry of product.details | keyvalue">
           <strong>{{ entry.key }}:</strong> {{ entry.value }}
         </li>
@@ -85,15 +85,15 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end" class="actions">
-  <button *ngIf="isDirectivo()" mat-button color="accent" (click)="onUpdate()" style="display: flex; align-items: center; gap: 4px;">
+  <button *ngIf="isDirectivo()" id="modal-update-button" mat-button color="accent" (click)="onUpdate()" style="display: flex; align-items: center; gap: 4px;">
     <mat-icon>edit</mat-icon>
     {{ 'PRODUCTS.BUTTON.UPDATE' | translate }}
   </button>
-  <button *ngIf="isDirectivo()" mat-button color="warn" (click)="onDelete()" style="display: flex; align-items: center; gap: 4px;">
+  <button *ngIf="isDirectivo()" id="modal-delete-button" mat-button color="warn" (click)="onDelete()" style="display: flex; align-items: center; gap: 4px;">
     <mat-icon>delete</mat-icon>
     {{ 'PRODUCTS.BUTTON.DELETE' | translate }}
   </button>
-  <button mat-button (click)="onClose()" style="display: flex; align-items: center; gap: 4px;">
+  <button id="modal-close-button" mat-button (click)="onClose()" style="display: flex; align-items: center; gap: 4px;">
     <mat-icon>close</mat-icon>
     {{ 'PRODUCTS.BUTTON.CANCEL' | translate }}
   </button>

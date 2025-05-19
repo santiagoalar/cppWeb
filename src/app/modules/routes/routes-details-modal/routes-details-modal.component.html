@@ -1,0 +1,147 @@
+<h2 mat-dialog-title style="display: flex; align-items: center; gap: 8px; padding-top: 12px;" id="route-details-title">
+  <mat-icon>map</mat-icon>
+  {{ isEditMode ? ('routes.editRoute' | translate) : ('routes.routeDetails' | translate) }}
+</h2>
+<mat-divider></mat-divider>
+
+<mat-dialog-content class="route-details-content" [@fadeIn] id="route-details-content">
+  <div class="two-column-container">
+    <div class="map-column">
+      <div class="map-container">
+        <h3>{{ 'routes.routeMap' | translate }}</h3>
+        <div class="map-wrapper" #routeMap id="route-map">
+        </div>
+        <p class="map-help-text" *ngIf="isEditMode">{{ 'routes.mapHelpText' | translate }}</p>
+      </div>
+    </div>
+
+    <div class="form-column">
+      <form [formGroup]="routeForm" class="route-form" id="route-form">
+        <div class="two-row-grid">
+          <mat-form-field appearance="fill" color="accent" id="name-field">
+            <mat-label>{{ 'routes.name' | translate }}</mat-label>
+            <input matInput formControlName="name" id="route-name-input" required>
+            <mat-error *ngIf="routeForm.get('name')?.hasError('required')">
+              {{ 'routes.nameRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" id="zone-field">
+            <mat-label>{{ 'routes.zone' | translate }}</mat-label>
+            <input matInput formControlName="zone" id="route-zone-input" required>
+            <mat-error *ngIf="routeForm.get('zone')?.hasError('required')">
+              {{ 'routes.zoneRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" id="description-field">
+            <mat-label>{{ 'routes.description' | translate }}</mat-label>
+            <textarea matInput formControlName="description" id="route-description-input" rows="3"></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" color="accent" id="due-to-field">
+            <mat-label>{{ 'routes.dueDate' | translate }}</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="due_to" id="route-due-to-input">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="user-assignment-section">
+          <h3>{{ 'routes.userAssignment' | translate }}</h3>
+
+          <mat-slide-toggle formControlName="assignToMe" color="accent" id="assign-to-me-toggle"
+            (change)="handleAssignmentChange()">
+            {{ 'routes.assignToMe' | translate }}
+          </mat-slide-toggle>
+
+          <mat-form-field appearance="fill" color="accent" id="user-id-field"
+            *ngIf="!routeForm.get('assignToMe')?.value" class="full-width">
+            <mat-label>{{ 'routes.userId' | translate }}</mat-label>
+            <input matInput formControlName="user_id" id="route-user-id-input" required>
+            <mat-error *ngIf="routeForm.get('user_id')?.hasError('required')">
+              {{ 'routes.userIdRequired' | translate }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="waypoints-section" id="waypoints-section">
+          <h3>{{ 'routes.waypoints' | translate }}</h3>
+
+          <div formArrayName="waypoints">
+            <div *ngFor="let waypoint of waypointsArray.controls; let i = index" class="waypoint-item"
+              [formGroupName]="i" id="waypoint-{{i}}">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title id="waypoint-title-{{i}}">
+                    {{ waypoint.get('name')?.value || ('routes.waypoint' | translate) + ' ' + (i + 1) }}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <div class="two-row-grid">
+                  <mat-form-field appearance="fill" color="accent" id="waypoint-name-field-{{i}}">
+                    <mat-label>{{ 'routes.waypointName' | translate }}</mat-label>
+                    <input matInput formControlName="name" id="waypoint-name-input-{{i}}" required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" color="accent" id="waypoint-address-field-{{i}}">
+                    <mat-label>{{ 'routes.address' | translate }}</mat-label>
+                    <input matInput formControlName="address" id="waypoint-address-input-{{i}}" required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" color="accent" id="waypoint-lat-field-{{i}}">
+                    <mat-label>{{ 'routes.latitude' | translate }}</mat-label>
+                    <input matInput type="number" step="0.000001" formControlName="latitude"
+                      id="waypoint-lat-input-{{i}}" required>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill" color="accent" id="waypoint-lng-field-{{i}}">
+                    <mat-label>{{ 'routes.longitude' | translate }}</mat-label>
+                    <input matInput type="number" step="0.000001" formControlName="longitude"
+                      id="waypoint-lng-input-{{i}}" required>
+                  </mat-form-field>
+                </div>
+
+                <div class="waypoint-actions" id="waypoint-actions-{{i}}">
+                  <button mat-button color="primary" type="button" (click)="selectLocationOnMap(i)"
+                    id="map-select-waypoint-{{i}}" *ngIf="isEditMode">
+                    <mat-icon>location_on</mat-icon>
+                    {{ 'routes.selectOnMap' | translate }}
+                  </button>
+                  <button mat-button color="warn" type="button" (click)="removeWaypoint(i)" id="remove-waypoint-{{i}}"
+                    *ngIf="isEditMode">
+                    <mat-icon>delete</mat-icon>
+                    {{ 'routes.removeWaypoint' | translate }}
+                  </button>
+                </div>
+              </mat-expansion-panel>
+            </div>
+          </div>
+
+          <div class="waypoint-buttons" *ngIf="isEditMode">
+            <button mat-stroked-button color="primary" type="button" (click)="addWaypoint()" id="add-waypoint-button">
+              <mat-icon>add_location</mat-icon>
+              {{ 'routes.addWaypoint' | translate }}
+            </button>
+
+            <button mat-stroked-button color="accent" type="button" (click)="addWaypointFromMap()"
+              id="add-waypoint-map-button">
+              <mat-icon>add_location_alt</mat-icon>
+              {{ 'routes.addWaypointFromMap' | translate }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" id="route-details-actions">
+  <button mat-button (click)="close()" id="close-route-details-button">
+    {{ 'common.cancel' | translate }}
+  </button>
+  <button *ngIf="isEditMode" mat-raised-button color="primary" [disabled]="routeForm.invalid" (click)="save()"
+    id="save-route-button">
+    <mat-icon>save</mat-icon>
+    {{ 'common.save' | translate }}
+  </button>
+</mat-dialog-actions>

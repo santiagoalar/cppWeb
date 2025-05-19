@@ -18,6 +18,23 @@ import { ProductsComponent } from './products/products.component';
 import { ProductFormModalComponent } from './products/product-form-modal/product-form-modal.component';
 import {  MatCardModule } from '@angular/material/card';
 import { ProductDetailsModalComponent } from './products/product-details-modal/product-details-modal.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailsModalComponent } from './orders/order-details-modal/order-details-modal.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BulkUploadModalComponent } from './products/bulk-upload-modal/bulk-upload-modal.component';
+import { RoutesComponent } from './routes/routes.component';
+import { SellingPlansComponent } from './selling-plans/selling-plans.component';
+import { RoutesDetailsModalComponent } from './routes/routes-details-modal/routes-details-modal.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { WarehouseModalComponent } from './warehouses/warehouse-modal/warehouse-modal.component';
+import { WarehousesComponent } from './warehouses/warehouses.component';
+import { WarehouseStockComponent } from './warehouses/warehouse-stock/warehouse-stock.component';
+import { StockItemModalComponent } from './warehouses/stock-item-modal/stock-item-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +42,17 @@ import { ProductDetailsModalComponent } from './products/product-details-modal/p
     ManufacturersModalComponent,
     ProductsComponent,
     ProductFormModalComponent,
-    ProductDetailsModalComponent
+    ProductDetailsModalComponent,
+    OrdersComponent,
+    OrderDetailsModalComponent,
+    BulkUploadModalComponent,
+    RoutesComponent,
+    SellingPlansComponent,
+    RoutesDetailsModalComponent,
+    WarehouseModalComponent,
+    WarehouseStockComponent,
+    WarehousesComponent,
+    StockItemModalComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +69,14 @@ import { ProductDetailsModalComponent } from './products/product-details-modal/p
     MatSelectModule,
     MatIconModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatSlideToggleModule
   ],
   exports: [
     TranslateModule,
@@ -51,6 +85,15 @@ import { ProductDetailsModalComponent } from './products/product-details-modal/p
     ProductsComponent,
     ProductFormModalComponent,
     ProductDetailsModalComponent,
+    OrdersComponent,
+    OrderDetailsModalComponent,
+    BulkUploadModalComponent,
+    RoutesComponent,
+    SellingPlansComponent,
+    RoutesDetailsModalComponent,
+    WarehouseModalComponent,
+    WarehousesComponent,
+    WarehouseStockComponent
   ]
 })
 export class SharedDeclarationsModule { }
