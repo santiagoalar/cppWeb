@@ -12,19 +12,20 @@ import { AuthService } from 'src/app/auth/auth.service';
   selector: 'app-manufacturers',
   templateUrl: './manufacturers.component.html',
   styleUrls: ['./manufacturers.component.scss'],
-    animations: [
-      trigger('fadeIn', [
-        transition(':enter', [
-          style({ opacity: 0, transform: 'translateY(20px)' }),
-          animate('500ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
-        ])
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('500ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
       ])
-    ]
+    ])
+  ]
 })
 export class ManufacturersComponent implements OnInit {
   manufacturers: ManufacturerData[] = [];
   searchId: string = '';
   searchNit: string = '';
+  loading: boolean = false;
 
   displayedColumns: string[] = [
     'name', 'nit', 'address', 'phone', 'email',
@@ -44,8 +45,24 @@ export class ManufacturersComponent implements OnInit {
   }
 
   getManufacturers(): void {
-    this.manufacturerService.getAllManufacturers().subscribe((data: ManufacturerData[]) => {
-      this.manufacturers = data;
+    this.loading = true;
+    this.manufacturerService.getAllManufacturers().subscribe({
+      next: (data: ManufacturerData[]) => {
+        this.manufacturers = data;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error fetching manufacturers:', error);
+        this.loading = false;
+        this.snackBar.open(
+          this.translate.instant('manufacturers.loadError'),
+          this.translate.instant('common.close'),
+          {
+            duration: 5000,
+            panelClass: ['snackbar-error']
+          }
+        );
+      }
     });
   }
 
@@ -64,11 +81,14 @@ export class ManufacturersComponent implements OnInit {
 
   searchById(): void {
     if (!this.searchId) return;
+    this.loading = true;
     this.manufacturerService.getManufacturerById(this.searchId).subscribe({
       next: (data) => {
+        this.loading = false;
         this.openCreateModal(data);
       },
       error: (err) => {
+        this.loading = false;
         const message = err?.error?.msg || this.translate.instant('manufacturers.notFoundById');
         this.snackBar.open(message, this.translate.instant('common.close'), {
           duration: 5000,
@@ -81,11 +101,14 @@ export class ManufacturersComponent implements OnInit {
 
   searchByNit(): void {
     if (!this.searchNit) return;
+    this.loading = true;
     this.manufacturerService.getManufacturerByNit(this.searchNit).subscribe({
       next: (data) => {
+        this.loading = false;
         this.openCreateModal(data);
       },
       error: (err) => {
+        this.loading = false;
         const message = err?.error?.msg || this.translate.instant('manufacturers.notFoundByNit');
         this.snackBar.open(message, this.translate.instant('common.close'), {
           duration: 5000,
@@ -97,9 +120,10 @@ export class ManufacturersComponent implements OnInit {
   }
 
   deleteManufacturer(id: string): void {
+    this.loading = true;
     this.manufacturerService.deleteManufacturer(id).subscribe({
       next: () => {
-        this.getManufacturers();
+        this.getManufacturers(); // This will reset loading state after fetching
         this.snackBar.open(
           this.translate.instant('manufacturers.deleteSuccess'),
           this.translate.instant('common.close'),
@@ -110,6 +134,7 @@ export class ManufacturersComponent implements OnInit {
         );
       },
       error: (err) => {
+        this.loading = false;
         const message = err?.error?.msg || this.translate.instant('manufacturers.deleteError');
         this.snackBar.open(message, this.translate.instant('common.close'), {
           duration: 5000,

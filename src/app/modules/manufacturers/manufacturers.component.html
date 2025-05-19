@@ -35,7 +35,15 @@
       </div>
     </div>
     <mat-divider></mat-divider>
-    <div *ngIf="manufacturers && manufacturers.length > 0; else noData">
+    <div *ngIf="loading" class="loading-container" id="manufacturers-loading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+    <div *ngIf="!loading && (!manufacturers || manufacturers.length === 0)" class="no-data-container"
+      id="manufacturers-no-data">
+      <mat-icon>error_outline</mat-icon>
+      <p>{{ 'manufacturers.noRowsFound' | translate }}</p>
+    </div>
+    <div *ngIf="!loading && manufacturers && manufacturers.length > 0" class="table-container">
       <table mat-table [dataSource]="manufacturers" class="mat-elevation-z8 manufacturers-table">
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef class="accent-header">{{ 'manufacturers.name' | translate }}</th>

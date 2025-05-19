@@ -1,0 +1,95 @@
+<h2 mat-dialog-title>
+  <mat-icon>inventory</mat-icon>
+  {{ 'STOCK_ITEMS.TITLE' | translate }} - {{data.warehouse.name}}
+</h2>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-content class="stock-items-content" [@fadeIn]>
+  <div class="action-bar">
+    <button *ngIf="isAdmin()" mat-raised-button color="accent" (click)="openCreateModal()" id="create-stock-item-button">
+      <mat-icon>add</mat-icon>
+      {{ 'STOCK_ITEMS.BUTTON.CREATE' | translate }}
+    </button>
+  </div>
+
+  <!-- Loading spinner -->
+  <div *ngIf="loading" class="loading-container" id="stock-items-loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  
+  <!-- No items message -->
+  <div *ngIf="!loading && (!stockItems || stockItems.length === 0)" class="no-data-container" id="stock-items-no-data">
+    <mat-icon>inventory_2</mat-icon>
+    <p>{{ 'STOCK_ITEMS.NO_ITEMS_FOUND' | translate }}</p>
+  </div>
+
+  <!-- Stock items table -->
+  <div *ngIf="!loading && stockItems && stockItems.length > 0" class="table-container" id="stock-items-table-container">
+    <table mat-table [dataSource]="stockItems" class="mat-elevation-z8">
+      <ng-container matColumnDef="item_id">
+        <th mat-header-cell *matHeaderCellDef>{{ 'STOCK_ITEMS.ITEM_ID' | translate }}</th>
+        <td mat-cell *matCellDef="let item">{{item.item_id | slice:0:8}}...</td>
+      </ng-container>
+
+      <ng-container matColumnDef="bar_code">
+        <th mat-header-cell *matHeaderCellDef>{{ 'STOCK_ITEMS.BAR_CODE' | translate }}</th>
+        <td mat-cell *matCellDef="let item">{{item.bar_code || '-'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="hallway">
+        <th mat-header-cell *matHeaderCellDef>{{ 'STOCK_ITEMS.HALLWAY' | translate }}</th>
+        <td mat-cell *matCellDef="let item">{{item.hallway}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="shelf">
+        <th mat-header-cell *matHeaderCellDef>{{ 'STOCK_ITEMS.SHELF' | translate }}</th>
+        <td mat-cell *matCellDef="let item">{{item.shelf}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dimensions">
+        <th mat-header-cell *matHeaderCellDef>{{ 'STOCK_ITEMS.DIMENSIONS' | translate }}</th>
+        <td mat-cell *matCellDef="let item">{{item.width}}x{{item.height}}x{{item.depth}} cm</td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef>{{ 'STOCK_ITEMS.WEIGHT' | translate }}</th>
+        <td mat-cell *matCellDef="let item">{{item.weight}} kg</td>
+      </ng-container>
+
+      <ng-container matColumnDef="sold">
+        <th mat-header-cell *matHeaderCellDef>{{ 'STOCK_ITEMS.SOLD' | translate }}</th>
+        <td mat-cell *matCellDef="let item">
+          <mat-icon *ngIf="item.sold" color="accent">check_circle</mat-icon>
+          <mat-icon *ngIf="!item.sold" color="warn">cancel</mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>{{ 'STOCK_ITEMS.STATUS' | translate }}</th>
+        <td mat-cell *matCellDef="let item">{{item.status}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>{{ 'COMMON.ACTIONS' | translate }}</th>
+        <td mat-cell *matCellDef="let item">
+          <button mat-icon-button color="accent" (click)="openEditModal(item)" id="stock-item-edit-{{item.id}}">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button *ngIf="isAdmin()" mat-icon-button color="warn" (click)="deleteStockItem(item.id)" id="stock-item-delete-{{item.id}}">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()" id="stock-items-close-button">
+    {{ 'COMMON.CLOSE' | translate }}
+  </button>
+</mat-dialog-actions>

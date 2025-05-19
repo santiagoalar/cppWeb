@@ -1,0 +1,43 @@
+.stock-item-form-content {
+  min-height: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.stock-item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+  
+  .form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    
+    mat-form-field {
+      flex: 1 1 200px;
+    }
+    
+    &.status-row {
+      align-items: center;
+      
+      mat-slide-toggle {
+        margin-right: auto;
+      }
+      
+      mat-form-field {
+        flex: 0 0 150px;
+      }
+    }
+  }
+  
+  h3 {
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.button-spinner {
+  margin: 0 10px;
+}

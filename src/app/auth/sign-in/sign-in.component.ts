@@ -40,6 +40,7 @@ export class SignInComponent implements OnInit {
           this.signInErrorMessage = null;
           if (response && response.token) {
             localStorage.setItem('token', response.token);
+            localStorage.setItem('userId', response.id);
             this.authService.validateToken(response.token).subscribe({
               next: (validationResponse) => {
                 if (validationResponse) {

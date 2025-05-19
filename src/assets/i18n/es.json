@@ -52,7 +52,10 @@
     "manufacturers": "Fabricantes",
     "orders": "Órdenes",
     "products": "Productos",
-    "signOut": "Cerrar sesión"
+    "signOut": "Cerrar sesión",
+    "routes": "Rutas",
+    "selling-plans": "Planes de Venta",
+    "warehouse": "Almacenes"
   },
   "manufacturers": {
     "title": "Fabricantes",
@@ -70,7 +73,13 @@
     "notFoundByNit": "No se encontró un fabricante con ese NIT.",
     "searchById": "Buscar por ID",
     "searchByNit": "Buscar por NIT",
-    "search": "Buscar"
+    "search": "Buscar",
+    "noRowsFound": "No se encontraron fabricantes",
+    "loadError": "Error al cargar los fabricantes",
+    "userAssignment": "Asignación de Usuario",
+    "assignToMe": "Asignar a mí mismo",
+    "userId": "ID de Usuario",
+    "userIdRequired": "Se requiere ID de Usuario"
   },
   "manufacturerModal": {
     "title": "Crear Fabricante",
@@ -93,7 +102,10 @@
     "update": "Actualizar"
   },
   "common": {
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "save": "Guardar",
+    "update": "Actualizar",
+    "cancel": "Cancelar"
   },
   "PRODUCT_FORM": {
     "TITLE": "Crear Producto",
@@ -196,5 +208,151 @@
       "DELIVERED": "Entregado",
       "REFUNDED": "Reembolsado"
     }
+  },
+  "routes": {
+    "title": "Rutas",
+    "createRoute": "Crear Ruta",
+    "routeDetails": "Detalles de la Ruta",
+    "editRoute": "Editar Ruta",
+    "name": "Nombre",
+    "nameRequired": "El nombre de la ruta es requerido",
+    "zone": "Zona",
+    "zoneRequired": "La zona es requerida",
+    "description": "Descripción",
+    "dueDate": "Fecha Límite",
+    "waypoints": "Puntos de Ruta",
+    "waypointName": "Nombre de Ubicación",
+    "address": "Dirección",
+    "latitude": "Latitud",
+    "longitude": "Longitud",
+    "addWaypoint": "Añadir Ubicación",
+    "removeWaypoint": "Eliminar",
+    "waypoint": "Ubicación",
+    "noRoutesFound": "No se encontraron rutas",
+    "view": "Ver",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "deleteRouteTitle": "Eliminar Ruta",
+    "deleteRouteConfirm": "¿Está seguro que desea eliminar la ruta '{name}'?",
+    "routeCreatedSuccess": "Ruta creada exitosamente",
+    "routeUpdatedSuccess": "Ruta actualizada exitosamente",
+    "routeDeletedSuccess": "Ruta eliminada exitosamente",
+    "errorLoadingRoutes": "Error al cargar rutas",
+    "errorCreatingRoute": "Error al crear ruta",
+    "errorUpdatingRoute": "Error al actualizar ruta",
+    "errorDeletingRoute": "Error al eliminar ruta",
+    "routeMap": "Mapa de Ruta",
+    "mapHelpText": "Haga clic en el mapa para establecer las coordenadas o use el botón 'Seleccionar en Mapa' para ubicaciones específicas",
+    "selectOnMap": "Seleccionar en Mapa",
+    "addWaypointFromMap": "Añadir Ubicación desde Mapa"
+  },
+  "sellingPlans": {
+    "title": "Planes de Venta",
+    "createPlan": "Crear Plan",
+    "planDetails": "Detalles del Plan",
+    "editPlan": "Editar Plan",
+    "title_field": "Título",
+    "titleRequired": "El título del plan es requerido",
+    "description": "Descripción",
+    "targetAmount": "Monto Objetivo",
+    "targetAmountRequired": "El monto objetivo es requerido",
+    "targetDate": "Fecha Objetivo",
+    "targetDateRequired": "La fecha objetivo es requerida",
+    "status": "Estado",
+    "progress": "Progreso",
+    "createdAt": "Creado el",
+    "noPlanFound": "No se encontraron planes de venta",
+    "view": "Ver",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "deletePlanTitle": "Eliminar Plan de Venta",
+    "deletePlanConfirm": "¿Está seguro que desea eliminar el plan de venta '{title}'?",
+    "planCreatedSuccess": "Plan de venta creado exitosamente",
+    "planUpdatedSuccess": "Plan de venta actualizado exitosamente",
+    "planDeletedSuccess": "Plan de venta eliminado exitosamente",
+    "errorLoadingPlans": "Error al cargar planes de venta",
+    "errorCreatingPlan": "Error al crear plan de venta",
+    "errorUpdatingPlan": "Error al actualizar plan de venta",
+    "errorDeletingPlan": "Error al eliminar plan de venta",
+    "statuses": {
+      "pending": "Pendiente",
+      "in_progress": "En Progreso",
+      "completed": "Completado",
+      "failed": "Fallido"
+    }
+  },
+  "WAREHOUSES": {
+  "TITLE": "Almacenes",
+  "CREATE_TITLE": "Crear Almacén",
+  "EDIT_TITLE": "Editar Almacén",
+  "BUTTON": {
+    "CREATE": "Crear Almacén"
+  },
+  "NAME": "Nombre",
+  "LOCATION": "Ubicación",
+  "DESCRIPTION": "Descripción",
+  "ADMINISTRATOR_ID": "ID de Administrador",
+  "STATUS": "Estado",
+  "NAME_REQUIRED": "El nombre es requerido",
+  "LOCATION_REQUIRED": "La ubicación es requerida",
+  "ADMINISTRATOR_REQUIRED": "El ID de administrador es requerido",
+  "STATUS_ACTIVE": "Activo",
+  "STATUS_INACTIVE": "Inactivo",
+  "SEARCH": "Buscar almacenes",
+  "NO_WAREHOUSES_FOUND": "No se encontraron almacenes",
+  "CONFIRM_DELETE": "¿Está seguro que desea eliminar este almacén?",
+  "SUCCESS": {
+    "CREATED": "Almacén creado exitosamente",
+    "UPDATED": "Almacén actualizado exitosamente",
+    "DELETED": "Almacén eliminado exitosamente"
+  },
+  "ERROR": {
+    "LOADING": "Error al cargar almacenes",
+    "CREATE": "Error al crear almacén",
+    "UPDATE": "Error al actualizar almacén",
+    "DELETE": "Error al eliminar almacén"
   }
+},
+"STOCK_ITEMS": {
+  "TITLE": "Artículos de Stock",
+  "CREATE_TITLE": "Añadir Artículo de Stock",
+  "EDIT_TITLE": "Editar Artículo de Stock",
+  "BUTTON": {
+    "CREATE": "Añadir Artículo de Stock"
+  },
+  "ITEM_ID": "ID de Producto",
+  "BAR_CODE": "Código de Barras",
+  "IDENTIFICATION_CODE": "Código de Identificación",
+  "HALLWAY": "Pasillo",
+  "SHELF": "Estante",
+  "DIMENSIONS": "Dimensiones",
+  "WIDTH": "Ancho",
+  "HEIGHT": "Alto",
+  "DEPTH": "Profundidad",
+  "WEIGHT": "Peso",
+  "SOLD": "Vendido",
+  "STATUS": "Estado",
+  "ITEM_ID_REQUIRED": "El ID de Producto es requerido",
+  "HALLWAY_REQUIRED": "El Pasillo es requerido",
+  "SHELF_REQUIRED": "El Estante es requerido",
+  "WIDTH_REQUIRED": "El Ancho es requerido",
+  "HEIGHT_REQUIRED": "El Alto es requerido",
+  "DEPTH_REQUIRED": "La Profundidad es requerida",
+  "WEIGHT_REQUIRED": "El Peso es requerido",
+  "STATUS_ACTIVE": "Activo",
+  "STATUS_INACTIVE": "Inactivo",
+  "NO_ITEMS_FOUND": "No se encontraron artículos de stock",
+  "CONFIRM_DELETE": "¿Está seguro que desea eliminar este artículo de stock?",
+  "SUCCESS": {
+    "CREATED": "Artículo de stock añadido exitosamente",
+    "UPDATED": "Artículo de stock actualizado exitosamente",
+    "DELETED": "Artículo de stock eliminado exitosamente"
+  },
+  "ERROR": {
+    "LOADING": "Error al cargar artículos de stock",
+    "CREATE": "Error al añadir artículo de stock",
+    "UPDATE": "Error al actualizar artículo de stock",
+    "DELETE": "Error al eliminar artículo de stock"
+  }
+}
 }

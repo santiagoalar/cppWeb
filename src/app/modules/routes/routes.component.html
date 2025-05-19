@@ -1,0 +1,66 @@
+<div class="main-page-container content-wrapper dark-theme" [@fadeIn] id="routes-page-container">
+  <div class="routes-container" id="routes-main-container">
+    <div class="page-header" id="routes-header">
+      <h1 class="page-title" style="display: flex; align-items: center; gap: 8px; margin: 0;" id="routes-title">
+        <mat-icon>map</mat-icon>
+        {{ 'routes.title' | translate }}
+      </h1>
+
+      <div class="actions-container" id="routes-actions">
+        <button mat-raised-button color="primary" (click)="openCreateRouteModal()" id="create-route-button">
+          <mat-icon>add</mat-icon>
+          {{ 'routes.createRoute' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <mat-divider id="routes-divider"></mat-divider>
+
+    <div *ngIf="loading" class="loading-container" id="routes-loading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+
+    <div *ngIf="!loading && routes.length === 0" class="no-data-container" id="routes-no-data">
+      <mat-icon>error_outline</mat-icon>
+      <p>{{ 'routes.noRoutesFound' | translate }}</p>
+    </div>
+
+    <div *ngIf="!loading && routes.length > 0" class="routes-grid" id="routes-grid">
+      <mat-card *ngFor="let route of routes; let i = index" class="route-card" id="route-card-{{i}}">
+        <mat-card-header id="route-header-{{i}}">
+          <mat-card-title id="route-title-{{i}}">{{route.name | uppercase}}</mat-card-title>
+          <mat-card-subtitle id="route-zone-{{i}}">{{route.zone}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content id="route-content-{{i}}">
+          <p class="route-description" id="route-description-{{i}}">{{route.description}}</p>
+          <div class="route-details" id="route-details-{{i}}">
+            <div class="detail-row" id="route-waypoints-{{i}}">
+              <span class="detail-label">{{ 'routes.waypoints' | translate }}:</span>
+              <span class="detail-value">{{route.waypoints?.length || 0}}</span>
+            </div>
+            <div class="detail-row" id="route-due-date-{{i}}">
+              <span class="detail-label">{{ 'routes.dueDate' | translate }}:</span>
+              <span class="detail-value">{{route.due_to | date}}</span>
+            </div>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions align="end" id="route-actions-{{i}}">
+          <button mat-button color="primary" (click)="viewRouteDetails(route)" id="view-route-{{i}}">
+            <mat-icon>visibility</mat-icon>
+            {{ 'routes.view' | translate }}
+          </button>
+          <button mat-button color="accent" (click)="editRoute(route)" id="edit-route-{{i}}">
+            <mat-icon>edit</mat-icon>
+            {{ 'routes.edit' | translate }}
+          </button>
+          <button mat-button color="warn" (click)="deleteRoute(route)" id="delete-route-{{i}}">
+            <mat-icon>delete</mat-icon>
+            {{ 'routes.delete' | translate }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
