@@ -25,6 +25,10 @@
         <mat-icon>assessment</mat-icon>
         {{ 'navbar.selling-plans' | translate }}
       </a>
+      <a id="nav-warehouse" *ngIf="isDirectivo()" mat-button routerLink="/warehouse">
+        <mat-icon>warehouse</mat-icon>
+        {{ 'navbar.warehouse' | translate }}
+      </a>
     </div>
     <span class="spacer"></span>
     <div class="actions">

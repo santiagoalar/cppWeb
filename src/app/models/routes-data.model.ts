@@ -12,6 +12,6 @@ export interface RouteData {
   zone: string;
   due_to: string;
   user_id: string;
-  waypoints: Waypoint[];
+  waypoints?: Waypoint[];
   created_at?: string;
 }

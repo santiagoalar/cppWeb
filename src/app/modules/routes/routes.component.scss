@@ -68,3 +68,20 @@
     margin-bottom: 8px;
   }
 }
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-top: 16px;
+}
+
+.actions-container {
+  display: flex;
+  gap: 8px;
+}
+
+.mat-card-title {
+  text-transform: uppercase;
+}

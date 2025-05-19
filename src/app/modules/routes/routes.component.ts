@@ -1,4 +1,4 @@
- import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
@@ -33,7 +33,7 @@ export class RoutesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem('userId') || ''; 
+    this.userId = localStorage.getItem('userId') || '';
     this.loadRoutes();
   }
 
@@ -54,8 +54,9 @@ export class RoutesComponent implements OnInit {
 
   openCreateRouteModal(): void {
     const dialogRef = this.dialog.open(RoutesDetailsModalComponent, {
-      width: '800px',
-      data: { 
+      width: '90vw',
+      maxWidth: '1200px',
+      data: {
         route: {
           user_id: this.userId,
           name: '',
@@ -96,7 +97,7 @@ export class RoutesComponent implements OnInit {
   editRoute(route: RouteData): void {
     const dialogRef = this.dialog.open(RoutesDetailsModalComponent, {
       width: '800px',
-      data: { route: {...route}, isEditMode: true }
+      data: { route: { ...route }, isEditMode: true }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -117,23 +118,21 @@ export class RoutesComponent implements OnInit {
     });
   }
 
-  confirmDeleteRoute(route: RouteData): void {
-    const confirmMessage = this.translate.instant('routes.deleteRouteConfirm', { name: route.name });
-    if (window.confirm(confirmMessage)) {
-      this.loading = true;
-      this.routesService.deleteRoute(route.id!).subscribe({
-        next: () => {
-          this.routes = this.routes.filter(r => r.id !== route.id);
-          this.loading = false;
-          this.showSnackBar('routes.routeDeletedSuccess');
-        },
-        error: (error) => {
-          console.error('Error deleting route:', error);
-          this.loading = false;
-          this.showSnackBar('routes.errorDeletingRoute');
-        }
-      });
-    }
+  deleteRoute(route: RouteData): void {
+    // Remove the confirmation dialog and directly delete
+    this.loading = true;
+    this.routesService.deleteRoute(route.id!).subscribe({
+      next: () => {
+        this.routes = this.routes.filter(r => r.id !== route.id);
+        this.loading = false;
+        this.showSnackBar('routes.routeDeletedSuccess');
+      },
+      error: (error) => {
+        console.error('Error deleting route:', error);
+        this.loading = false;
+        this.showSnackBar('routes.errorDeletingRoute');
+      }
+    });
   }
 
   private showSnackBar(messageKey: string): void {

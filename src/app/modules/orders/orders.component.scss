@@ -81,3 +81,40 @@ $theme: mat-dark-theme($primary, $accent, $warn);
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  width: 100%;
+}
+
+.no-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  width: 100%;
+  margin: 40px 0;
+  
+  mat-icon {
+    font-size: 64px;
+    height: 64px;
+    width: 64px;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  p {
+    font-size: 20px;
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.orders-container {
+  min-height: 600px;
+  position: relative;
+}

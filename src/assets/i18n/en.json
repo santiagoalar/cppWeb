@@ -31,6 +31,12 @@
     "save": "Save",
     "cancel": "Cancel"
   },
+    "COMMON": {
+    "LANGUAGE": "Language",
+    "CLOSE": "Close",
+    "SAVE": "Save",
+    "CANCEL": "Cancel"
+  },
   "mainPage": {
     "title": "Welcome to Our Website!",
     "description": "We are glad to have you here.",
@@ -60,7 +66,8 @@
     "products": "Products",
     "signOut": "Sign Out",
     "routes": "Routes",
-    "selling-plans": "Selling Plans"
+    "selling-plans": "Selling Plans",
+    "warehouse": "Warehouses"
   },
   "manufacturers": {
     "title": "Manufacturers",
@@ -79,7 +86,9 @@
     "searchById": "Search by ID",
     "searchByNit": "Search by NIT",
     "search": "Search",
-    "actions": "Actions"
+    "actions": "Actions",
+    "noRowsFound": "No manufacturers found matching your search criteria",
+    "loadError": "Error loading manufacturers"
   },
   "manufacturerModal": {
     "title": "Create Manufacturer",
@@ -233,7 +242,15 @@
     "errorLoadingRoutes": "Error loading routes",
     "errorCreatingRoute": "Error creating route",
     "errorUpdatingRoute": "Error updating route",
-    "errorDeletingRoute": "Error deleting route"
+    "errorDeletingRoute": "Error deleting route",
+    "routeMap": "Route Map",
+    "mapHelpText": "Click on the map to set location coordinates or use the 'Select on Map' button for specific waypoints",
+    "selectOnMap": "Select on Map",
+    "addWaypointFromMap": "Add Location from Map",
+    "userAssignment": "User Assignment",
+    "assignToMe": "Assign to myself",
+    "userId": "User ID",
+    "userIdRequired": "User ID is required"
   },
   "sellingPlans": {
     "title": "Selling Plans",
@@ -268,6 +285,80 @@
       "in_progress": "In Progress",
       "completed": "Completed",
       "failed": "Failed"
+    }
+  },
+  "WAREHOUSES": {
+    "TITLE": "Warehouses",
+    "CREATE_TITLE": "Create Warehouse",
+    "EDIT_TITLE": "Edit Warehouse",
+    "BUTTON": {
+      "CREATE": "Create Warehouse"
+    },
+    "NAME": "Name",
+    "LOCATION": "Location",
+    "DESCRIPTION": "Description",
+    "ADMINISTRATOR_ID": "Administrator ID",
+    "STATUS": "Status",
+    "NAME_REQUIRED": "Name is required",
+    "LOCATION_REQUIRED": "Location is required",
+    "ADMINISTRATOR_REQUIRED": "Administrator ID is required",
+    "STATUS_ACTIVE": "Active",
+    "STATUS_INACTIVE": "Inactive",
+    "SEARCH": "Search warehouses",
+    "NO_WAREHOUSES_FOUND": "No warehouses found",
+    "CONFIRM_DELETE": "Are you sure you want to delete this warehouse?",
+    "SUCCESS": {
+      "CREATED": "Warehouse created successfully",
+      "UPDATED": "Warehouse updated successfully",
+      "DELETED": "Warehouse deleted successfully"
+    },
+    "ERROR": {
+      "LOADING": "Error loading warehouses",
+      "CREATE": "Error creating warehouse",
+      "UPDATE": "Error updating warehouse",
+      "DELETE": "Error deleting warehouse"
+    }
+  },
+  "STOCK_ITEMS": {
+    "TITLE": "Stock Items",
+    "CREATE_TITLE": "Add Stock Item",
+    "EDIT_TITLE": "Edit Stock Item",
+    "BUTTON": {
+      "CREATE": "Add Stock Item"
+    },
+    "ITEM_ID": "Product ID",
+    "BAR_CODE": "Bar Code",
+    "IDENTIFICATION_CODE": "Identification Code",
+    "HALLWAY": "Hallway",
+    "SHELF": "Shelf",
+    "DIMENSIONS": "Dimensions",
+    "WIDTH": "Width",
+    "HEIGHT": "Height",
+    "DEPTH": "Depth",
+    "WEIGHT": "Weight",
+    "SOLD": "Sold",
+    "STATUS": "Status",
+    "ITEM_ID_REQUIRED": "Product ID is required",
+    "HALLWAY_REQUIRED": "Hallway is required",
+    "SHELF_REQUIRED": "Shelf is required",
+    "WIDTH_REQUIRED": "Width is required",
+    "HEIGHT_REQUIRED": "Height is required",
+    "DEPTH_REQUIRED": "Depth is required",
+    "WEIGHT_REQUIRED": "Weight is required",
+    "STATUS_ACTIVE": "Active",
+    "STATUS_INACTIVE": "Inactive",
+    "NO_ITEMS_FOUND": "No stock items found",
+    "CONFIRM_DELETE": "Are you sure you want to delete this stock item?",
+    "SUCCESS": {
+      "CREATED": "Stock item added successfully",
+      "UPDATED": "Stock item updated successfully",
+      "DELETED": "Stock item deleted successfully"
+    },
+    "ERROR": {
+      "LOADING": "Error loading stock items",
+      "CREATE": "Error adding stock item",
+      "UPDATE": "Error updating stock item",
+      "DELETE": "Error deleting stock item"
     }
   }
 }

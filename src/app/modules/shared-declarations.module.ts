@@ -29,6 +29,12 @@ import { RoutesDetailsModalComponent } from './routes/routes-details-modal/route
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { WarehouseModalComponent } from './warehouses/warehouse-modal/warehouse-modal.component';
+import { WarehousesComponent } from './warehouses/warehouses.component';
+import { WarehouseStockComponent } from './warehouses/warehouse-stock/warehouse-stock.component';
+import { StockItemModalComponent } from './warehouses/stock-item-modal/stock-item-modal.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +48,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     BulkUploadModalComponent,
     RoutesComponent,
     SellingPlansComponent,
-    RoutesDetailsModalComponent
+    RoutesDetailsModalComponent,
+    WarehouseModalComponent,
+    WarehouseStockComponent,
+    WarehousesComponent,
+    StockItemModalComponent
   ],
   imports: [
     CommonModule,
@@ -64,7 +74,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatSlideToggleModule
   ],
   exports: [
     TranslateModule,
@@ -78,6 +90,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     BulkUploadModalComponent,
     RoutesComponent,
     SellingPlansComponent,
+    RoutesDetailsModalComponent,
+    WarehouseModalComponent,
+    WarehousesComponent,
+    WarehouseStockComponent
   ]
 })
 export class SharedDeclarationsModule { }

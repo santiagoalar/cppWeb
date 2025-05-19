@@ -1,0 +1,71 @@
+<div class="main-page-container content-wrapper" [@fadeIn]>
+  <div class="warehouses-container">
+    <h1 class="page-title">
+      <mat-icon>warehouse</mat-icon>
+      {{ 'WAREHOUSES.TITLE' | translate }}
+    </h1>
+
+    <div class="action-bar">
+      <div class="action-buttons">
+        <button *ngIf="isAdmin()" mat-raised-button color="accent" (click)="openCreateModal()"
+          id="create-warehouse-button">
+          <mat-icon>add</mat-icon>
+          {{ 'WAREHOUSES.BUTTON.CREATE' | translate }}
+        </button>
+      </div>
+
+      <div class="search-field">
+        <mat-form-field appearance="fill" color="accent">
+          <mat-label>{{ 'WAREHOUSES.SEARCH' | translate }}</mat-label>
+          <input matInput [(ngModel)]="searchTerm" id="warehouse-search-input">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div *ngIf="loading" class="loading-container" id="warehouses-loading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+
+    <div *ngIf="!loading && (!warehouses || warehouses.length === 0)" class="no-data-container" id="warehouses-no-data">
+      <mat-icon>warehouse</mat-icon>
+      <p>{{ 'WAREHOUSES.NO_WAREHOUSES_FOUND' | translate }}</p>
+    </div>
+
+    <div *ngIf="!loading && warehouses && warehouses.length > 0" class="warehouses-grid" id="warehouses-grid">
+      <div class="warehouse-grid"></div>
+      <mat-card *ngFor="let warehouse of warehouses" class="warehouse-card" id="warehouse-card-{{warehouse.id}}">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>warehouse</mat-icon>
+          <mat-card-title>{{warehouse.name}}</mat-card-title>
+          <mat-card-subtitle>{{warehouse.location}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p class="description">{{warehouse.description}}</p>
+          <p class="status" [ngClass]="warehouse.status">
+            <mat-icon>{{warehouse.status === 'active' ? 'check_circle' : 'warning'}}</mat-icon>
+            {{warehouse.status}}
+          </p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-icon-button color="primary" (click)="openStockModal(warehouse)"
+            id="warehouse-stock-{{warehouse.id}}">
+            <mat-icon>inventory</mat-icon>
+          </button>
+          <button *ngIf="isAdmin()" mat-icon-button color="accent" (click)="openEditModal(warehouse)"
+            id="warehouse-edit-{{warehouse.id}}">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button *ngIf="isAdmin()" mat-icon-button color="warn" (click)="deleteWarehouse(warehouse.id!)"
+            id="warehouse-delete-{{warehouse.id}}">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

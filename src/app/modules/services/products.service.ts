@@ -43,17 +43,10 @@ export class ProductsService {
 
   uploadProductsBulk(file: File): Observable<any> {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', file, file.name);
 
-    const token = localStorage.getItem('token') || '';
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-
-    return this.http.put<any>(
-      `${this.apiUrl}bulk`,
-      formData,
-      { headers }
+    return this.http.post<any>(
+      `${this.apiUrl}bulk`, formData, this.getAuthHeader()
     );
   }
 }

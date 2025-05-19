@@ -108,3 +108,44 @@ $theme: mat-dark-theme($primary, $accent, $warn);
     margin: 0;
     color: white;
   }
+
+.no-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  width: 100%;
+  padding: 64px 0;
+  
+  mat-icon {
+    font-size: 64px;
+    height: 64px;
+    width: 64px;
+    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  p {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+}
+
+.products-container {
+  min-height: 600px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  width: 100%;
+}
+
+.cards-container {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}

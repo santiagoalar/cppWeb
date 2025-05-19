@@ -5,7 +5,17 @@
       {{ 'orders.title' | translate }}
     </h1>
     <mat-divider id="orders-divider"></mat-divider>
-    <div *ngIf="orders.data && orders.data.length > 0; else noData" id="orders-table-container">
+
+    <div *ngIf="loading" class="loading-container" id="orders-loading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+    
+    <div *ngIf="!loading && (!orders.data || orders.data.length === 0)" class="no-data-container" id="orders-no-data">
+      <mat-icon>error_outline</mat-icon>
+      <p>{{ 'orders.noOrders' | translate }}</p>
+    </div>
+    
+    <div *ngIf="!loading && orders.data && orders.data.length > 0" id="orders-table-container">
       <table mat-table [dataSource]="orders" class="mat-elevation-z8 orders-table" id="orders-table">
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef class="accent-header" id="orders-id-header">{{ 'orders.id' | translate }}</th>
