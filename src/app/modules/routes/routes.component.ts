@@ -54,7 +54,7 @@ export class RoutesComponent implements OnInit {
 
   openCreateRouteModal(): void {
     const dialogRef = this.dialog.open(RoutesDetailsModalComponent, {
-      width: '90vw',
+      width: '1200px',
       maxWidth: '1200px',
       data: {
         route: {
@@ -89,14 +89,14 @@ export class RoutesComponent implements OnInit {
 
   viewRouteDetails(route: RouteData): void {
     this.dialog.open(RoutesDetailsModalComponent, {
-      width: '800px',
+      width: '1200px',
       data: { route, isEditMode: false }
     });
   }
 
   editRoute(route: RouteData): void {
     const dialogRef = this.dialog.open(RoutesDetailsModalComponent, {
-      width: '800px',
+      width: '1200px',
       data: { route: { ...route }, isEditMode: true }
     });
 
@@ -119,7 +119,6 @@ export class RoutesComponent implements OnInit {
   }
 
   deleteRoute(route: RouteData): void {
-    // Remove the confirmation dialog and directly delete
     this.loading = true;
     this.routesService.deleteRoute(route.id!).subscribe({
       next: () => {
