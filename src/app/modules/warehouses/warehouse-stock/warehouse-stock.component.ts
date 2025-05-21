@@ -43,22 +43,17 @@ export class WarehouseStockComponent implements OnInit {
 
   loadStockItems(): void {
     this.loading = true;
-    if (this.data.warehouse.id) {
-      this.stockItemsService.getStockItemsByWarehouseId(this.data.warehouse.id).subscribe({
-        next: (items) => {
-          this.stockItems = items;
-          this.loading = false;
-        },
-        error: (error) => {
-          console.error('Error loading stock items:', error);
-          this.loading = false;
-          this.showSnackBar('STOCK_ITEMS.ERROR.LOADING');
-        }
-      });
-    } else {
-      this.loading = false;
-      this.showSnackBar('STOCK_ITEMS.ERROR.INVALID_WAREHOUSE');
-    }
+    this.stockItemsService.getStockItemsByWarehouseId(this.data.warehouse.warehouse_id).subscribe({
+      next: (items) => {
+        this.stockItems = items;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error loading stock items:', error);
+        this.loading = false;
+        this.showSnackBar('STOCK_ITEMS.ERROR.LOADING');
+      }
+    });
   }
 
   openCreateModal(): void {
@@ -66,7 +61,7 @@ export class WarehouseStockComponent implements OnInit {
       width: '600px',
       data: {
         isNew: true,
-        warehouseId: this.data.warehouse.id
+        warehouseId: this.data.warehouse.warehouse_id
       }
     });
 
@@ -83,7 +78,7 @@ export class WarehouseStockComponent implements OnInit {
       data: {
         isNew: false,
         stockItem,
-        warehouseId: this.data.warehouse.id
+        warehouseId: this.data.warehouse.warehouse_id
       }
     });
 
@@ -94,27 +89,34 @@ export class WarehouseStockComponent implements OnInit {
     });
   }
 
-  deleteStockItem(id: string): void {
-    if (confirm(this.translate.instant('STOCK_ITEMS.CONFIRM_DELETE'))) {
-      this.loading = true;
-      this.stockItemsService.deleteStockItem(id).subscribe({
-        next: () => {
-          this.loadStockItems();
-          this.showSnackBar('STOCK_ITEMS.SUCCESS.DELETED');
-        },
-        error: (error) => {
-          console.error('Error deleting stock item:', error);
-          this.loading = false;
-          this.showSnackBar('STOCK_ITEMS.ERROR.DELETE');
-        }
-      });
+  deleteStockItem(stockItem: WarehouseStockItemData): void {
+    // Use warehouse_stock_item_id instead of id
+    const deleteId = stockItem.warehouse_stock_item_id;
+
+    if (!deleteId) {
+      console.error('Missing stock item ID for delete');
+      this.showSnackBar('STOCK_ITEMS.ERROR.DELETE');
+      return;
     }
+
+    this.loading = true;
+    this.stockItemsService.deleteStockItem(deleteId).subscribe({
+      next: () => {
+        this.loadStockItems();
+        this.showSnackBar('STOCK_ITEMS.SUCCESS.DELETED');
+      },
+      error: (error) => {
+        console.error('Error deleting stock item:', error);
+        this.loading = false;
+        this.showSnackBar('STOCK_ITEMS.ERROR.DELETE');
+      }
+    });
   }
 
   close(): void {
     this.dialogRef.close();
   }
-  
+
   isAdmin(): boolean {
     return this.auth.isUserDirectivo();
   }

@@ -146,6 +146,9 @@ $theme: mat-dark-theme($primary, $accent, $warn);
 }
 
 .cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
   padding-top: 24px;
   padding-bottom: 24px;
 }

@@ -289,79 +289,77 @@
     "ASSIGN_TO_MYSELF": "Asignarme como administrador",
     "MY_WAREHOUSES": "Mis Almacenes",
     "ALL_WAREHOUSES": "Todos los Almacenes",
-    "MAP_INSTRUCTIONS": "Haga clic en el mapa para seleccionar ubicación o busque ingresando una dirección",
-    "ADDRESS_NOT_FOUND": "Dirección no encontrada. Por favor intente con otro término de búsqueda.",
     "BUTTON": {
-    "CREATE": "Crear Almacén"
+      "CREATE": "Crear Almacén"
+    },
+    "NAME": "Nombre",
+    "LOCATION": "Ubicación",
+    "DESCRIPTION": "Descripción",
+    "ADMINISTRATOR_ID": "ID de Administrador",
+    "STATUS": "Estado",
+    "NAME_REQUIRED": "El nombre es requerido",
+    "LOCATION_REQUIRED": "La ubicación es requerida",
+    "ADMINISTRATOR_REQUIRED": "El ID de administrador es requerido",
+    "STATUS_ACTIVE": "Activo",
+    "STATUS_INACTIVE": "Inactivo",
+    "SEARCH": "Buscar almacenes",
+    "NO_WAREHOUSES_FOUND": "No se encontraron almacenes",
+    "CONFIRM_DELETE": "¿Está seguro que desea eliminar este almacén?",
+    "PRODUCT": "Producto",
+    "PRODUCT_REQUIRED": "El producto es requerido",
+    "SUCCESS": {
+      "CREATED": "Almacén creado exitosamente",
+      "UPDATED": "Almacén actualizado exitosamente",
+      "DELETED": "Almacén eliminado exitosamente"
+    },
+    "ERROR": {
+      "LOADING": "Error al cargar almacenes",
+      "CREATE": "Error al crear almacén",
+      "UPDATE": "Error al actualizar almacén",
+      "DELETE": "Error al eliminar almacén",
+      "LOADING_PRODUCTS": "Error al cargar productos"
+    }
   },
-  "NAME": "Nombre",
-  "LOCATION": "Ubicación",
-  "DESCRIPTION": "Descripción",
-  "ADMINISTRATOR_ID": "ID de Administrador",
-  "STATUS": "Estado",
-  "NAME_REQUIRED": "El nombre es requerido",
-  "LOCATION_REQUIRED": "La ubicación es requerida",
-  "ADMINISTRATOR_REQUIRED": "El ID de administrador es requerido",
-  "STATUS_ACTIVE": "Activo",
-  "STATUS_INACTIVE": "Inactivo",
-  "SEARCH": "Buscar almacenes",
-  "NO_WAREHOUSES_FOUND": "No se encontraron almacenes",
-  "CONFIRM_DELETE": "¿Está seguro que desea eliminar este almacén?",
-  "PRODUCT": "Producto",
-  "PRODUCT_REQUIRED": "El producto es requerido",
-  "SUCCESS": {
-    "CREATED": "Almacén creado exitosamente",
-    "UPDATED": "Almacén actualizado exitosamente",
-    "DELETED": "Almacén eliminado exitosamente"
-  },
-  "ERROR": {
-    "LOADING": "Error al cargar almacenes",
-    "CREATE": "Error al crear almacén",
-    "UPDATE": "Error al actualizar almacén",
-    "DELETE": "Error al eliminar almacén",
-    "LOADING_PRODUCTS": "Error al cargar productos"
+  "STOCK_ITEMS": {
+    "TITLE": "Artículos de Stock",
+    "CREATE_TITLE": "Añadir Artículo de Stock",
+    "EDIT_TITLE": "Editar Artículo de Stock",
+    "BUTTON": {
+      "CREATE": "Añadir Artículo de Stock"
+    },
+    "ITEM_ID": "ID de Producto",
+    "BAR_CODE": "Código de Barras",
+    "IDENTIFICATION_CODE": "Código de Identificación",
+    "HALLWAY": "Pasillo",
+    "SHELF": "Estante",
+    "DIMENSIONS": "Dimensiones",
+    "WIDTH": "Ancho",
+    "HEIGHT": "Alto",
+    "DEPTH": "Profundidad",
+    "WEIGHT": "Peso",
+    "SOLD": "Vendido",
+    "STATUS": "Estado",
+    "ITEM_ID_REQUIRED": "El ID de Producto es requerido",
+    "HALLWAY_REQUIRED": "El Pasillo es requerido",
+    "SHELF_REQUIRED": "El Estante es requerido",
+    "WIDTH_REQUIRED": "El Ancho es requerido",
+    "HEIGHT_REQUIRED": "El Alto es requerido",
+    "DEPTH_REQUIRED": "La Profundidad es requerida",
+    "WEIGHT_REQUIRED": "El Peso es requerido",
+    "STATUS_ACTIVE": "Activo",
+    "STATUS_INACTIVE": "Inactivo",
+    "NO_ITEMS_FOUND": "No se encontraron artículos de stock",
+    "CONFIRM_DELETE": "¿Está seguro que desea eliminar este artículo de stock?",
+    "SUCCESS": {
+      "CREATED": "Artículo de stock añadido exitosamente",
+      "UPDATED": "Artículo de stock actualizado exitosamente",
+      "DELETED": "Artículo de stock eliminado exitosamente"
+    },
+    "ERROR": {
+      "LOADING": "Error al cargar artículos de stock",
+      "CREATE": "Error al añadir artículo de stock",
+      "UPDATE": "Error al actualizar artículo de stock",
+      "DELETE": "Error al eliminar artículo de stock"
+    }
   }
-},
-"STOCK_ITEMS": {
-  "TITLE": "Artículos de Stock",
-  "CREATE_TITLE": "Añadir Artículo de Stock",
-  "EDIT_TITLE": "Editar Artículo de Stock",
-  "BUTTON": {
-    "CREATE": "Añadir Artículo de Stock"
-  },
-  "ITEM_ID": "ID de Producto",
-  "BAR_CODE": "Código de Barras",
-  "IDENTIFICATION_CODE": "Código de Identificación",
-  "HALLWAY": "Pasillo",
-  "SHELF": "Estante",
-  "DIMENSIONS": "Dimensiones",
-  "WIDTH": "Ancho",
-  "HEIGHT": "Alto",
-  "DEPTH": "Profundidad",
-  "WEIGHT": "Peso",
-  "SOLD": "Vendido",
-  "STATUS": "Estado",
-  "ITEM_ID_REQUIRED": "El ID de Producto es requerido",
-  "HALLWAY_REQUIRED": "El Pasillo es requerido",
-  "SHELF_REQUIRED": "El Estante es requerido",
-  "WIDTH_REQUIRED": "El Ancho es requerido",
-  "HEIGHT_REQUIRED": "El Alto es requerido",
-  "DEPTH_REQUIRED": "La Profundidad es requerida",
-  "WEIGHT_REQUIRED": "El Peso es requerido",
-  "STATUS_ACTIVE": "Activo",
-  "STATUS_INACTIVE": "Inactivo",
-  "NO_ITEMS_FOUND": "No se encontraron artículos de stock",
-  "CONFIRM_DELETE": "¿Está seguro que desea eliminar este artículo de stock?",
-  "SUCCESS": {
-    "CREATED": "Artículo de stock añadido exitosamente",
-    "UPDATED": "Artículo de stock actualizado exitosamente",
-    "DELETED": "Artículo de stock eliminado exitosamente"
-  },
-  "ERROR": {
-    "LOADING": "Error al cargar artículos de stock",
-    "CREATE": "Error al añadir artículo de stock",
-    "UPDATE": "Error al actualizar artículo de stock",
-    "DELETE": "Error al eliminar artículo de stock"
-  }
-}
 }

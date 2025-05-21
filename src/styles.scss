@@ -65,3 +65,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   padding: 0 16px;
   box-sizing: border-box;
 }
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+.mat-dialog-content {
+  margin: 0 !important;
+  padding: 24px !important;
+}

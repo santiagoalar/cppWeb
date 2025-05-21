@@ -1,5 +1,5 @@
 export interface WarehouseStockItemData {
-  id?: string;
+  warehouse_stock_item_id?: string;
   warehouse_id: string;
   item_id: string;
   bar_code?: string;

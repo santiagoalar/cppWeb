@@ -7,24 +7,24 @@
 
 <mat-dialog-content class="stock-items-content" [@fadeIn]>
   <div class="action-bar">
-    <button *ngIf="isAdmin()" mat-raised-button color="accent" (click)="openCreateModal()" id="create-stock-item-button">
+    <button *ngIf="isAdmin()" mat-raised-button color="accent" style="margin-bottom: 12px;" (click)="openCreateModal()"
+      id="create-stock-item-button">
       <mat-icon>add</mat-icon>
       {{ 'STOCK_ITEMS.BUTTON.CREATE' | translate }}
     </button>
   </div>
 
-  <!-- Loading spinner -->
   <div *ngIf="loading" class="loading-container" id="stock-items-loading">
     <mat-spinner diameter="50"></mat-spinner>
   </div>
-  
-  <!-- No items message -->
+
   <div *ngIf="!loading && (!stockItems || stockItems.length === 0)" class="no-data-container" id="stock-items-no-data">
-    <mat-icon>inventory_2</mat-icon>
-    <p>{{ 'STOCK_ITEMS.NO_ITEMS_FOUND' | translate }}</p>
+    <div class="no-data-content">
+      <mat-icon>inventory_2</mat-icon>
+      <p>{{ 'STOCK_ITEMS.NO_ITEMS_FOUND' | translate }}</p>
+    </div>
   </div>
 
-  <!-- Stock items table -->
   <div *ngIf="!loading && stockItems && stockItems.length > 0" class="table-container" id="stock-items-table-container">
     <table mat-table [dataSource]="stockItems" class="mat-elevation-z8">
       <ng-container matColumnDef="item_id">
@@ -72,11 +72,14 @@
 
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>{{ 'COMMON.ACTIONS' | translate }}</th>
-        <td mat-cell *matCellDef="let item">
-          <button mat-icon-button color="accent" (click)="openEditModal(item)" id="stock-item-edit-{{item.id}}">
+        <td mat-cell *matCellDef="let stockItem"
+          id="stock-item-actions-{{stockItem.warehouse_stock_item_id || stockItem.id}}">
+          <button mat-icon-button color="accent" (click)="openEditModal(stockItem)"
+            id="stock-item-edit-{{stockItem.warehouse_stock_item_id || stockItem.id}}">
             <mat-icon>edit</mat-icon>
           </button>
-          <button *ngIf="isAdmin()" mat-icon-button color="warn" (click)="deleteStockItem(item.id)" id="stock-item-delete-{{item.id}}">
+          <button mat-icon-button color="warn" (click)="deleteStockItem(stockItem)"
+            id="stock-item-delete-{{stockItem.warehouse_stock_item_id || stockItem.id}}">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
