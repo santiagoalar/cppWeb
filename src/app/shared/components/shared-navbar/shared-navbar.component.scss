@@ -150,3 +150,23 @@ $theme: mat-dark-theme($primary, $accent, $warn);
 ::ng-deep .user-info-menu .user-footer button:hover {
   background: rgba(255, 64, 129, 0.1);
 }
+
+.app-title-link {
+  text-decoration: none !important;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  
+  &:hover, &:focus, &:active, &:visited {
+    text-decoration: none !important;
+    border-bottom: none;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.app-title {
+  display: flex;
+  align-items: center;
+  text-decoration: none !important;
+}

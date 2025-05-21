@@ -1,9 +1,11 @@
 <mat-toolbar id="shared-navbar" class="navbar" [@fadeIn]>
   <div class="navbar-inner">
-    <div id="navbar-title" class="app-title">
-      <img src="assets/minilogo.png" alt="Logo" class="logo" />
-      CCP
-    </div>
+    <a routerLink="/" class="app-title-link">
+      <div id="navbar-title" class="app-title">
+        <img src="assets/minilogo.png" alt="Logo" class="logo" />
+        CCP
+      </div>
+    </a>
     <div id="navbar-links" class="nav-links">
       <a id="nav-manufacturers" *ngIf="isDirectivo()" mat-button routerLink="/manufacturers">
         <mat-icon>domain</mat-icon>

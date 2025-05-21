@@ -57,7 +57,7 @@ $theme: mat-dark-theme($primary, $accent, $warn);
   width: 100%;
   
   .accent-header-row {
-    background-color: mat-color($accent);
+    background-color: mat-color($accent) !important;
   }
   
   .accent-header {
