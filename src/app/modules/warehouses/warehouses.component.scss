@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: center;
   height: 400px;
-  
+
   mat-icon {
     font-size: 64px;
     height: 64px;
@@ -35,7 +35,7 @@
     margin-bottom: 24px;
     color: rgba(255, 255, 255, 0.7);
   }
-  
+
   p {
     font-size: 20px;
     color: rgba(255, 255, 255, 0.7);
@@ -52,7 +52,7 @@
 .warehouse-card {
   mat-card-content {
     margin-top: 16px;
-    
+
     .description {
       margin-bottom: 12px;
       height: 60px;
@@ -62,26 +62,43 @@
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
     }
-    
+
     .status {
       display: flex;
       align-items: center;
       gap: 8px;
       font-weight: 500;
       text-transform: capitalize;
-      
+
       &.active {
         color: green;
       }
-      
+
       &.inactive {
         color: darkgray;
       }
     }
   }
-  
+
   mat-card-actions {
     display: flex;
     justify-content: flex-end;
+  }
+}
+
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  .action-buttons-left {
+    display: flex;
+    gap: 12px;
+  }
+
+  .action-buttons-right {
+    display: flex;
+    gap: 12px;
   }
 }

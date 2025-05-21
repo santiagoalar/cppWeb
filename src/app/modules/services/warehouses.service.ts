@@ -36,6 +36,18 @@ export class WarehousesService {
       params
     });
   }
+
+  getWarehouses(filters?: { administratorId?: string }): Observable<WarehouseData[]> {
+    if (filters && filters.administratorId) {
+      const params = new HttpParams().set('administrator_id', filters.administratorId);
+      return this.http.get<WarehouseData[]>(this.apiUrl, {
+        ...this.getAuthHeader(),
+        params
+      });
+    }
+    
+    return this.http.get<WarehouseData[]>(this.apiUrl, this.getAuthHeader());
+  }
   
   getAllWarehouses(): Observable<WarehouseData[]> {
     return this.http.get<WarehouseData[]>(this.apiUrl, this.getAuthHeader());
