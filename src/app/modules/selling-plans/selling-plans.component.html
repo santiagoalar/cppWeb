@@ -7,7 +7,7 @@
       </h1>
 
       <div class="actions-container" id="selling-plans-actions">
-        <button mat-raised-button color="primary" (click)="toggleCreateMode()" id="create-plan-button" *ngIf="!createMode && !editMode">
+        <button mat-raised-button color="accent" (click)="toggleCreateMode()" id="create-plan-button" *ngIf="!createMode && !editMode">
           <mat-icon>add</mat-icon>
           {{ 'sellingPlans.createPlan' | translate }}
         </button>

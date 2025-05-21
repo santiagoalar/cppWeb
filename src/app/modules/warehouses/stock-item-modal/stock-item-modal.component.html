@@ -8,11 +8,19 @@
 <mat-dialog-content class="stock-item-form-content" [@fadeIn]>
   <form [formGroup]="stockItemForm" class="stock-item-form">
     <div class="form-row">
-      <mat-form-field appearance="fill" color="accent">
-        <mat-label>{{ 'STOCK_ITEMS.ITEM_ID' | translate }}</mat-label>
-        <input matInput formControlName="item_id" required id="stock-item-id-input">
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'STOCK_ITEMS.PRODUCT' | translate }}</mat-label>
+        <mat-select formControlName="item_id" required id="stock-item-id-select">
+          <mat-option *ngIf="productsLoading">
+            <mat-spinner diameter="20"></mat-spinner>
+            {{ 'COMMON.LOADING' | translate }}
+          </mat-option>
+          <mat-option *ngFor="let product of products" [value]="product.id">
+            {{product.name}} ({{ product.id }})
+          </mat-option>
+        </mat-select>
         <mat-error *ngIf="stockItemForm.get('item_id')?.hasError('required')">
-          {{ 'STOCK_ITEMS.ITEM_ID_REQUIRED' | translate }}
+          {{ 'STOCK_ITEMS.PRODUCT_REQUIRED' | translate }}
         </mat-error>
       </mat-form-field>
     </div>
@@ -22,7 +30,7 @@
         <mat-label>{{ 'STOCK_ITEMS.BAR_CODE' | translate }}</mat-label>
         <input matInput formControlName="bar_code" id="stock-item-barcode-input">
       </mat-form-field>
-      
+
       <mat-form-field appearance="fill" color="accent">
         <mat-label>{{ 'STOCK_ITEMS.IDENTIFICATION_CODE' | translate }}</mat-label>
         <input matInput formControlName="identification_code" id="stock-item-ident-code-input">
@@ -37,7 +45,7 @@
           {{ 'STOCK_ITEMS.HALLWAY_REQUIRED' | translate }}
         </mat-error>
       </mat-form-field>
-      
+
       <mat-form-field appearance="fill" color="accent">
         <mat-label>{{ 'STOCK_ITEMS.SHELF' | translate }}</mat-label>
         <input matInput formControlName="shelf" required id="stock-item-shelf-input">
@@ -56,7 +64,7 @@
           {{ 'STOCK_ITEMS.WIDTH_REQUIRED' | translate }}
         </mat-error>
       </mat-form-field>
-      
+
       <mat-form-field appearance="fill" color="accent">
         <mat-label>{{ 'STOCK_ITEMS.HEIGHT' | translate }} (cm)</mat-label>
         <input matInput type="number" formControlName="height" required id="stock-item-height-input">
@@ -64,7 +72,7 @@
           {{ 'STOCK_ITEMS.HEIGHT_REQUIRED' | translate }}
         </mat-error>
       </mat-form-field>
-      
+
       <mat-form-field appearance="fill" color="accent">
         <mat-label>{{ 'STOCK_ITEMS.DEPTH' | translate }} (cm)</mat-label>
         <input matInput type="number" formControlName="depth" required id="stock-item-depth-input">
@@ -88,7 +96,7 @@
       <mat-slide-toggle formControlName="sold" color="warn" id="stock-item-sold-toggle">
         {{ 'STOCK_ITEMS.SOLD' | translate }}
       </mat-slide-toggle>
-    
+
       <mat-form-field *ngIf="!isNew" appearance="fill" color="accent">
         <mat-label>{{ 'STOCK_ITEMS.STATUS' | translate }}</mat-label>
         <mat-select formControlName="status" id="stock-item-status-select">
@@ -104,11 +112,7 @@
   <button mat-button (click)="close()" id="stock-item-cancel-button">
     {{ 'COMMON.CANCEL' | translate }}
   </button>
-  <button 
-    mat-raised-button 
-    color="accent" 
-    [disabled]="stockItemForm.invalid || loading" 
-    (click)="save()" 
+  <button mat-raised-button color="accent" [disabled]="stockItemForm.invalid || loading" (click)="save()"
     id="stock-item-save-button">
     <mat-spinner *ngIf="loading" diameter="20" class="button-spinner"></mat-spinner>
     <span *ngIf="!loading">{{ 'COMMON.SAVE' | translate }}</span>

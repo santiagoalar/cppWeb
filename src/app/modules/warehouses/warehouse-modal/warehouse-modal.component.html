@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>
+<h2 mat-dialog-title class="dialog-title">
   <mat-icon>{{ isNew ? 'add' : 'edit' }}</mat-icon>
   {{ (isNew ? 'WAREHOUSES.CREATE_TITLE' : 'WAREHOUSES.EDIT_TITLE') | translate }}
 </h2>
@@ -7,42 +7,61 @@
 
 <mat-dialog-content class="warehouse-form-content" [@fadeIn]>
   <form [formGroup]="warehouseForm" class="warehouse-form">
-    <mat-form-field appearance="fill" color="accent">
-      <mat-label>{{ 'WAREHOUSES.NAME' | translate }}</mat-label>
-      <input matInput formControlName="name" required id="warehouse-name-input">
-      <mat-error *ngIf="warehouseForm.get('name')?.hasError('required')">
-        {{ 'WAREHOUSES.NAME_REQUIRED' | translate }}
-      </mat-error>
-    </mat-form-field>
+    <div class="form-grid">
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'WAREHOUSES.NAME' | translate }}</mat-label>
+        <input matInput formControlName="name" required id="warehouse-name-input">
+        <mat-error *ngIf="warehouseForm.get('name')?.hasError('required')">
+          {{ 'WAREHOUSES.NAME_REQUIRED' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill" color="accent">
-      <mat-label>{{ 'WAREHOUSES.LOCATION' | translate }}</mat-label>
-      <input matInput formControlName="location" required id="warehouse-location-input">
-      <mat-error *ngIf="warehouseForm.get('location')?.hasError('required')">
-        {{ 'WAREHOUSES.LOCATION_REQUIRED' | translate }}
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'WAREHOUSES.LOCATION' | translate }}</mat-label>
+        <input matInput formControlName="location" required id="warehouse-location-input">
+        <mat-error *ngIf="warehouseForm.get('location')?.hasError('required')">
+          {{ 'WAREHOUSES.LOCATION_REQUIRED' | translate }}
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill" color="accent">
-      <mat-label>{{ 'WAREHOUSES.DESCRIPTION' | translate }}</mat-label>
-      <textarea matInput formControlName="description" rows="4" id="warehouse-description-input"></textarea>
-    </mat-form-field>
+      <mat-form-field appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'WAREHOUSES.DESCRIPTION' | translate }}</mat-label>
+        <textarea matInput formControlName="description" rows="5" id="warehouse-description-input"></textarea>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill" color="accent">
-      <mat-label>{{ 'WAREHOUSES.ADMINISTRATOR_ID' | translate }}</mat-label>
-      <input matInput formControlName="administrator_id" required id="warehouse-admin-input">
-      <mat-error *ngIf="warehouseForm.get('administrator_id')?.hasError('required')">
-        {{ 'WAREHOUSES.ADMINISTRATOR_REQUIRED' | translate }}
-      </mat-error>
-    </mat-form-field>
+      <!-- Administrator assignment section -->
+      <div class="administrator-section">
+        <h3>{{ 'WAREHOUSES.ADMINISTRATOR_ASSIGNMENT' | translate }}</h3>
+        
+        <mat-slide-toggle 
+          formControlName="assignToMe"
+          color="accent" 
+          id="assign-admin-to-me-toggle"
+          (change)="handleAdministratorAssignment()">
+          {{ 'WAREHOUSES.ASSIGN_TO_MYSELF' | translate }}
+        </mat-slide-toggle>
+        
+        <mat-form-field 
+          appearance="fill" 
+          color="accent" 
+          *ngIf="!warehouseForm.get('assignToMe')?.value"
+          class="full-width">
+          <mat-label>{{ 'WAREHOUSES.ADMINISTRATOR_ID' | translate }}</mat-label>
+          <input matInput formControlName="administrator_id" required id="warehouse-admin-input">
+          <mat-error *ngIf="warehouseForm.get('administrator_id')?.hasError('required')">
+            {{ 'WAREHOUSES.ADMINISTRATOR_REQUIRED' | translate }}
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-    <mat-form-field *ngIf="!isNew" appearance="fill" color="accent">
-      <mat-label>{{ 'WAREHOUSES.STATUS' | translate }}</mat-label>
-      <mat-select formControlName="status" id="warehouse-status-select">
-        <mat-option value="active">{{ 'WAREHOUSES.STATUS_ACTIVE' | translate }}</mat-option>
-        <mat-option value="inactive">{{ 'WAREHOUSES.STATUS_INACTIVE' | translate }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field *ngIf="!isNew" appearance="fill" color="accent" class="full-width">
+        <mat-label>{{ 'WAREHOUSES.STATUS' | translate }}</mat-label>
+        <mat-select formControlName="status" id="warehouse-status-select">
+          <mat-option value="active">{{ 'WAREHOUSES.STATUS_ACTIVE' | translate }}</mat-option>
+          <mat-option value="inactive">{{ 'WAREHOUSES.STATUS_INACTIVE' | translate }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </form>
 </mat-dialog-content>
 

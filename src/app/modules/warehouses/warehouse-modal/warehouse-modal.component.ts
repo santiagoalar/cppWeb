@@ -25,6 +25,7 @@ export class WarehouseModalComponent implements OnInit {
   warehouseForm: FormGroup;
   isNew: boolean;
   loading: boolean = false;
+  currentUserId: string;
 
   constructor(
     private fb: FormBuilder,
@@ -36,28 +37,56 @@ export class WarehouseModalComponent implements OnInit {
     private auth: AuthService
   ) {
     this.isNew = data.isNew;
+    this.currentUserId = localStorage.getItem('userId') || '';
+    
+    // Initialize form with assignToMe control
     this.warehouseForm = this.fb.group({
       name: ['', Validators.required],
       location: ['', Validators.required],
       description: [''],
       administrator_id: ['', Validators.required],
+      assignToMe: [true], // Default to true
       status: ['active']
     });
   }
 
   ngOnInit(): void {
+    // Set initial form values
     if (!this.isNew && this.data.warehouse) {
+      // For existing warehouse
+      const isCurrentUserAdmin = this.data.warehouse.administrator_id === this.currentUserId;
+      
       this.warehouseForm.patchValue({
         name: this.data.warehouse.name,
         location: this.data.warehouse.location,
         description: this.data.warehouse.description,
         administrator_id: this.data.warehouse.administrator_id,
+        assignToMe: isCurrentUserAdmin,
         status: this.data.warehouse.status || 'active'
       });
     } else {
+      // For new warehouse, set current user as administrator by default
       this.warehouseForm.patchValue({
-        administrator_id: localStorage.getItem('userId') || ''
+        administrator_id: this.currentUserId
       });
+    }
+    
+    // Initial state of administrator_id based on assignToMe value
+    this.handleAdministratorAssignment();
+  }
+
+  handleAdministratorAssignment(): void {
+    const assignToMe = this.warehouseForm.get('assignToMe')?.value;
+    
+    if (assignToMe) {
+      this.warehouseForm.get('administrator_id')?.setValue(this.currentUserId);
+      this.warehouseForm.get('administrator_id')?.disable();
+    } else {
+      this.warehouseForm.get('administrator_id')?.enable();
+      // Only clear if it matches the current user, don't clear if it's set to someone else
+      if (this.warehouseForm.get('administrator_id')?.value === this.currentUserId) {
+        this.warehouseForm.get('administrator_id')?.setValue('');
+      }
     }
   }
 
@@ -67,7 +96,21 @@ export class WarehouseModalComponent implements OnInit {
     }
     
     this.loading = true;
-    const warehouseData = this.warehouseForm.value as WarehouseData;
+    
+    // Enable administrator_id control so it's included in the form value
+    this.warehouseForm.get('administrator_id')?.enable();
+    
+    // Get form value but exclude the assignToMe control which is just for UI
+    const formValue = this.warehouseForm.value;
+    
+    const warehouseData: WarehouseData = {
+      warehouse_id: this.isNew ? '' : this.data.warehouse!.warehouse_id, // Include warehouse_id
+      name: formValue.name,
+      location: formValue.location,
+      description: formValue.description,
+      administrator_id: formValue.administrator_id,
+      status: formValue.status
+    };
     
     if (this.isNew) {
       this.warehousesService.createWarehouse(warehouseData).subscribe({
@@ -83,7 +126,7 @@ export class WarehouseModalComponent implements OnInit {
         }
       });
     } else {
-      this.warehousesService.updateWarehouse(this.data.warehouse?.id || '', warehouseData).subscribe({
+      this.warehousesService.updateWarehouse(this.data.warehouse!.warehouse_id, warehouseData).subscribe({
         next: () => {
           this.showSnackBar('WAREHOUSES.SUCCESS.UPDATED');
           this.dialogRef.close(true);

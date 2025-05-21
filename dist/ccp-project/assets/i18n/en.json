@@ -295,8 +295,6 @@
     "ASSIGN_TO_MYSELF": "Set myself as administrator",
     "MY_WAREHOUSES": "My Warehouses",
     "ALL_WAREHOUSES": "All Warehouses",
-    "MAP_INSTRUCTIONS": "Click on the map to select location or search by entering an address",
-    "ADDRESS_NOT_FOUND": "Address not found. Please try another search term.",
     "BUTTON": {
       "CREATE": "Create Warehouse"
     },

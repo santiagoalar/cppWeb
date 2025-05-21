@@ -26,6 +26,9 @@ export class WarehousesComponent implements OnInit {
   warehouses: WarehouseData[] = [];
   loading: boolean = false;
   searchTerm: string = '';
+  filterByCurrentUser: boolean = false;
+  currentUserId: string = localStorage.getItem('userId') || '';
+  
 
   constructor(
     private warehousesService: WarehousesService,
@@ -41,7 +44,12 @@ export class WarehousesComponent implements OnInit {
 
   loadWarehouses(): void {
     this.loading = true;
-    this.warehousesService.getAllWarehouses().subscribe({
+
+    const adminId = this.filterByCurrentUser ? this.currentUserId : undefined;
+
+    this.warehousesService.getWarehouses({
+      administratorId: adminId
+    }).subscribe({
       next: (warehouses) => {
         this.warehouses = warehouses;
         this.loading = false;
@@ -52,6 +60,11 @@ export class WarehousesComponent implements OnInit {
         this.showSnackBar('WAREHOUSES.ERROR.LOADING');
       }
     });
+  }
+
+  toggleMyWarehouses(): void {
+    this.filterByCurrentUser = !this.filterByCurrentUser;
+    this.loadWarehouses();
   }
 
   openCreateModal(): void {
@@ -79,7 +92,7 @@ export class WarehousesComponent implements OnInit {
       }
     });
   }
-  
+
   openStockModal(warehouse: WarehouseData): void {
     this.dialog.open(WarehouseStockComponent, {
       width: '900px',
@@ -87,21 +100,19 @@ export class WarehousesComponent implements OnInit {
     });
   }
 
-  deleteWarehouse(id: string): void {
-    if (confirm(this.translate.instant('WAREHOUSES.CONFIRM_DELETE'))) {
-      this.loading = true;
-      this.warehousesService.deleteWarehouse(id).subscribe({
-        next: () => {
-          this.loadWarehouses();
-          this.showSnackBar('WAREHOUSES.SUCCESS.DELETED');
-        },
-        error: (error) => {
-          console.error('Error deleting warehouse:', error);
-          this.loading = false;
-          this.showSnackBar('WAREHOUSES.ERROR.DELETE');
-        }
-      });
-    }
+  deleteWarehouse(warehouse: WarehouseData): void {
+    this.loading = true;
+    this.warehousesService.deleteWarehouse(warehouse.warehouse_id).subscribe({
+      next: () => {
+        this.loadWarehouses();
+        this.showSnackBar('WAREHOUSES.SUCCESS.DELETED');
+      },
+      error: (error) => {
+        console.error('Error deleting warehouse:', error);
+        this.loading = false;
+        this.showSnackBar('WAREHOUSES.ERROR.DELETE');
+      }
+    });
   }
 
   isAdmin(): boolean {
